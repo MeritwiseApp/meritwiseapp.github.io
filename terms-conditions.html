@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, shrink-to-fit=no">
+    <title>Terms & Conditions - Meritwise</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: white;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            padding: 20px;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .back-btn {
+            width: 36px;
+            height: 36px;
+            min-width: 36px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            color: white;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .header-content {
+            flex: 1;
+        }
+
+        .header-title {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .header-subtitle {
+            font-size: 13px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Content */
+        .content {
+            padding: 24px 20px;
+        }
+
+        .update-banner {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .update-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 6px;
+        }
+
+        .update-text {
+            font-size: 12px;
+            color: #1e3a8a;
+            line-height: 1.5;
+        }
+
+        .toc-nav {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 32px;
+        }
+
+        .toc-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-link {
+            font-size: 13px;
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .toc-link:hover {
+            background: white;
+            transform: translateX(4px);
+        }
+
+        .section {
+            margin-bottom: 32px;
+            scroll-margin-top: 80px;
+        }
+
+        .section-number {
+            display: inline-block;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+            line-height: 32px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 12px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: #1f2937;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-content {
+            color: #4b5563;
+            font-size: 14px;
+            line-height: 1.8;
+            font-weight: 500;
+        }
+
+        .section-content p {
+            margin-bottom: 14px;
+        }
+
+        .section-content strong {
+            color: #1f2937;
+            font-weight: 700;
+        }
+
+        .subsection {
+            margin-top: 16px;
+            padding-left: 16px;
+            border-left: 3px solid #e5e7eb;
+        }
+
+        .subsection-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .bullet-list {
+            list-style: none;
+            margin: 12px 0;
+        }
+
+        .bullet-list li {
+            padding-left: 24px;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .bullet-list li::before {
+            content: '•';
+            position: absolute;
+            left: 8px;
+            color: #3b82f6;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .highlight-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .highlight-box p {
+            font-size: 13px;
+            color: #78350f;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: #dcfce7;
+            border-left: 4px solid #10b981;
+            padding: 14px 16px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        .info-box p {
+            font-size: 13px;
+            color: #065f46;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 32px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .contact-info {
+            font-size: 13px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .contact-link {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        .accept-section {
+            position: sticky;
+            bottom: 0;
+            background: white;
+            padding: 16px 20px;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
+        }
+
+        .accept-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 2px;
+            accent-color: #3b82f6;
+        }
+
+        .checkbox-label {
+            font-size: 13px;
+            color: #374151;
+            font-weight: 600;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .accept-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .accept-btn:disabled {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .accept-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4);
+        }
+
+        .accept-btn:active {
+            transform: translateY(0);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 24px 20px;
+            font-size: 12px;
+            color: #9ca3af;
+            font-weight: 500;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 16px;
+            }
+
+            .section-content {
+                font-size: 13px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="css/safe-area.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <button class="back-btn" onclick="history.back()">←</button>
+            <div class="header-content">
+                <h1 class="header-title">Terms & Conditions</h1>
+                <p class="header-subtitle">Please read carefully before using Meritwise</p>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Update Banner -->
+            <div class="update-banner">
+                <div class="update-title">Last Updated: December 17, 2025</div>
+                <div class="update-text">These Terms & Conditions govern your use of Meritwise services. By creating an account, you agree to be bound by these terms.</div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-nav">
+                <div class="toc-title">Quick Navigation</div>
+                <ul class="toc-list">
+                    <li><a href="#section1" class="toc-link">1. Acceptance of Terms</a></li>
+                    <li><a href="#section2" class="toc-link">2. Eligibility & Account Registration</a></li>
+                    <li><a href="#section3" class="toc-link">3. Services Provided</a></li>
+                    <li><a href="#section4" class="toc-link">4. Fees & Charges</a></li>
+                    <li><a href="#section5" class="toc-link">5. Transactions & Refunds</a></li>
+                    <li><a href="#section6" class="toc-link">6. User Responsibilities</a></li>
+                    <li><a href="#section7" class="toc-link">7. Security</a></li>
+                    <li><a href="#section8" class="toc-link">8. Account Suspension & Termination</a></li>
+                    <li><a href="#section9" class="toc-link">9. Limitation of Liability</a></li>
+                    <li><a href="#section10" class="toc-link">10. Changes to Terms</a></li>
+                    <li><a href="#section11" class="toc-link">11. Contact Information</a></li>
+                </ul>
+            </div>
+
+            <!-- Section 1 -->
+            <div class="section" id="section1">
+                <h2 class="section-title">
+                    <span class="section-number">1</span>
+                    Acceptance of Terms
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise is a digital payment platform. By accessing or using the Meritwise mobile application or services, you agree to be bound by these Terms & Conditions.</p>
+                    
+                    <p>If you do not agree, do not use the app.</p>
+
+                    <div class="info-box">
+                        <p><strong>Important:</strong> These terms form a legally binding agreement between you and Meritwise. Please read them carefully.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2 -->
+            <div class="section" id="section2">
+                <h2 class="section-title">
+                    <span class="section-number">2</span>
+                    Eligibility & Account Registration
+                </h2>
+                <div class="section-content">
+                    <p>To access Meritwise services, you must create an account. You agree to:</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Be at least 18 years of age or older</li>
+                        <li>Provide accurate and truthful information during registration</li>
+                        <li>Maintain the confidentiality of your login details and PIN</li>
+                        <li>Be responsible for all activities carried out on your account</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Note:</strong> Meritwise reserves the right to suspend or terminate accounts that provide false or misleading information.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="section" id="section3">
+                <h2 class="section-title">
+                    <span class="section-number">3</span>
+                    Services Provided
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise provides the following services:</p>
+                    
+                    <ul class="bullet-list">
+                        <li><strong>Wallet funding:</strong> Add money to your Meritwise wallet</li>
+                        <li><strong>Wallet-to-wallet transfers:</strong> Send money to other Meritwise users</li>
+                        <li><strong>Bank transfers:</strong> Transfer money to bank accounts</li>
+                        <li><strong>Airtime purchases:</strong> Buy mobile airtime for all networks</li>
+                        <li><strong>Data subscriptions:</strong> Purchase data bundles</li>
+                        <li><strong>Cable TV payments:</strong> Pay for cable TV subscriptions</li>
+                        <li><strong>Electricity bill payments:</strong> Pay electricity bills</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Please Note:</strong> Meritwise does not offer loans, savings, investments, betting, or virtual cards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="section" id="section4">
+                <h2 class="section-title">
+                    <span class="section-number">4</span>
+                    Fees & Charges
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise earns revenue only from service fees on:</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Airtime purchases</li>
+                        <li>Data subscriptions</li>
+                        <li>Cable TV payments</li>
+                        <li>Electricity bill payments</li>
+                    </ul>
+
+                    <p>Any applicable fee will be clearly displayed before transaction confirmation.</p>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">4.1 Other Transaction Fees</h3>
+                        <p>Wallet funding, wallet transfers, and bank transfers may be free or charged depending on the payment method used.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="section" id="section5">
+                <h2 class="section-title">
+                    <span class="section-number">5</span>
+                    Transactions & Refunds
+                </h2>
+                <div class="section-content">
+                    <p>Transactions are processed through licensed third-party payment providers.</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Failed transactions are automatically reversed where applicable</li>
+                        <li>Successful airtime, data, cable, and electricity purchases may not be refundable</li>
+                        <li>Users are encouraged to report transaction issues as soon as possible.</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Important:</strong> Meritwise is not responsible for service failures caused by third-party providers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="section" id="section6">
+                <h2 class="section-title">
+                    <span class="section-number">6</span>
+                    User Responsibilities
+                </h2>
+                <div class="section-content">
+                    <p>You agree NOT to:</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Use the platform for fraud or illegal activities</li>
+                        <li>Attempt to hack, exploit, or bypass system security</li>
+                        <li>Use another person's payment method without authorization</li>
+                        <li>Create multiple accounts to abuse promotions</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Violation Consequences:</strong> Violation may result in suspension, termination, or legal action.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="section" id="section7">
+                <h2 class="section-title">
+                    <span class="section-number">7</span>
+                    Security
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise implements reasonable security measures, including:</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Secure communication protocols</li>
+                        <li>Access controls</li>
+                        <li>Transaction monitoring</li>
+                        <li>Rate limiting and fraud detection</li>
+                    </ul>
+
+                    <div class="highlight-box">
+                        <p><strong>Security Warning:</strong> Users must never share passwords, PINs, or OTPs. Meritwise staff will never request sensitive credentials.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="section" id="section8">
+                <h2 class="section-title">
+                    <span class="section-number">8</span>
+                    Account Suspension & Termination
+                </h2>
+                <div class="section-content">
+                    <div class="subsection">
+                        <h3 class="subsection-title">8.1 Meritwise's Right to Suspend or Terminate</h3>
+                        <p>Meritwise may suspend or terminate accounts if:</p>
+                        <ul class="bullet-list">
+                            <li>Fraud or suspicious activity is detected</li>
+                            <li>Verification requirements are not met</li>
+                            <li>These terms are violated</li>
+                            <li>Required by law or authorities</li>
+                        </ul>
+                    </div>
+
+                    <div class="subsection">
+                        <h3 class="subsection-title">8.2 Your Right to Close Your Account</h3>
+                        <p>Users may request account closure at any time, subject to completion of pending transactions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 9 -->
+            <div class="section" id="section9">
+                <h2 class="section-title">
+                    <span class="section-number">9</span>
+                    Limitation of Liability
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise acts as a payment intermediary and is not liable for:</p>
+                    
+                    <ul class="bullet-list">
+                        <li>Downtime or failures from banks or service providers</li>
+                        <li>Network or system interruptions beyond our control</li>
+                        <li>Losses caused by user negligence</li>
+                    </ul>
+
+                    <div class="info-box">
+                        <p><strong>Disclaimer:</strong> Use of the platform is subject to these terms and applicable laws.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 10 -->
+            <div class="section" id="section10">
+                <h2 class="section-title">
+                    <span class="section-number">10</span>
+                    Changes to Terms
+                </h2>
+                <div class="section-content">
+                    <p>Meritwise may update these Terms at any time. We will update the "Last Updated" date at the top of this page when changes are made.</p>
+
+                    <p>Continued use of the app after changes means you accept the updated terms.</p>
+
+                    <div class="info-box">
+                        <p><strong>Stay Informed:</strong> We encourage you to review these terms periodically to stay informed of any updates.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 11 -->
+            <div class="section" id="section11">
+                <h2 class="section-title">
+                    <span class="section-number">11</span>
+                    Contact Information
+                </h2>
+                <div class="section-content">
+                    <p>For questions or support, please contact us:</p>
+                    
+                    <div class="contact-card">
+                        <div class="contact-title">Need Help or Have Questions?</div>
+                        <div class="contact-info">Email: <a href="mailto:support@meritwise.com" class="contact-link">support@meritwise.com</a></div>
+                        <div class="contact-info" style="margin-top: 12px;">In-app support channel also available</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accept Section -->
+        <div class="accept-section">
+            <div class="accept-checkbox">
+                <input type="checkbox" class="checkbox" id="acceptTerms">
+                <label class="checkbox-label" for="acceptTerms">
+                    I have read, understood, and agree to Meritwise's Terms & Conditions
+                </label>
+            </div>
+            <button class="accept-btn" id="acceptBtn" disabled>Accept & Continue</button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            © 2025 Meritwise. All rights reserved. | <a href="privacy-policy.html" class="contact-link">Privacy Policy</a>
+        </div>
+    </div>
+
+    //<script>
+    //    const checkbox = document.getElementById('acceptTerms');
+    //    const acceptBtn = document.getElementById('acceptBtn');
+    //    
+    //    checkbox.addEventListener('change', function() {
+    //        acceptBtn.disabled = !this.checked;
+    //    });
+//
+    //    acceptBtn.addEventListener('click', function() {
+    //        if (checkbox.checked) {
+    //            // Handle acceptance - redirect or close
+    //            alert('Thank you for accepting our Terms & Conditions!');
+    //            // window.location.href = 'dashboard.html'; // Redirect to your app
+    //        }
+    //    });
+//
+    //    // Smooth scroll for navigation links
+    //    document.querySelectorAll('.toc-link').forEach(link => {
+    //        link.addEventListener('click', function(e) {
+    //            e.preventDefault();
+    //            const targetId = this.getAttribute('href');
+    //            const targetSection = document.querySelector(targetId);
+    //            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    //        });
+    //    });
+    //</script>
+    <script>
+        // Enable accept button when checkbox is checked
+        const acceptCheckbox = document.getElementById('acceptTerms');
+        const acceptBtn = document.getElementById('acceptBtn');
+
+        acceptCheckbox.addEventListener('change', function() {
+            acceptBtn.disabled = !this.checked;
+        });
+
+        acceptBtn.addEventListener('click', function() {
+            if (acceptCheckbox.checked) {
+                window.location.href = 'index.html'
+            }
+        });
+
+        // Smooth scroll for TOC links
+        document.querySelectorAll('.toc-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+    <script src="js/statusbar-config.js"></script>
+</body>
+</html>
