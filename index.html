@@ -1048,12 +1048,17 @@
             }
 
             .hero-buttons, .cta-buttons {
-                flex-direction: column;
-            }
-
-            .app-btn, .cta-btn {
-                justify-content: center;
-            }
+                 flex-direction: row;
+                 flex-wrap: nowrap;
+             }
+         
+             .app-btn, .cta-btn {
+                 justify-content: center;
+                 flex: 1;
+                 min-width: 0;
+                 padding: 14px 15px;
+                 font-size: 13px;
+             }
 
             .phone-mockup {
                 width: 300px;
