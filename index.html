@@ -217,40 +217,46 @@
 
         .trust-badges {
             display: flex;
-            gap: 40px;
+            gap: 15px;
             align-items: center;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
+            justify-content: center;
         }
 
         .trust-badge {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background: var(--light);
-            border-radius: 15px;
-            transition: all 0.3s;
-        }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 15px;
+    background: var(--light);
+    border-radius: 12px;
+    transition: all 0.3s;
+    flex: 1;
+    min-width: 0;
+}
 
-        .trust-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
+.trust-badge:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
 
-        .trust-badge .number {
-            font-size: 36px;
-            font-weight: 900;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+.trust-badge .number {
+    font-size: clamp(20px, 5vw, 36px);
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+}
 
-        .trust-badge .label {
-            font-size: 14px;
-            color: var(--gray);
-            font-weight: 600;
-        }
+.trust-badge .label {
+    font-size: clamp(10px, 2.5vw, 14px);
+    color: var(--gray);
+    font-weight: 600;
+    text-align: center;
+    white-space: nowrap;
+}
 
         .hero-visual {
             position: relative;
