@@ -1418,7 +1418,7 @@
                         <span class="day">Monday</span>
                         <span class="time">8:00 AM - 6:00 PM</span>
                     </div>
-                    <div class="hours-item today">
+                    <div class="hours-item">
                         <span class="day">Tuesday</span>
                         <span class="time">8:00 AM - 6:00 PM</span>
                     </div>
@@ -1542,6 +1542,21 @@
             if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
                 navLinks.classList.remove('active');
                 menuToggle.classList.toggle('active');
+            }
+        });
+
+
+        // Highlight current day in business hours
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const currentDay = daysOfWeek[new Date().getDay()];
+        
+        const hoursItems = document.querySelectorAll('.hours-item');
+        hoursItems.forEach(item => {
+            const daySpan = item.querySelector('.day');
+            if (daySpan.textContent === currentDay) {
+                item.classList.add('today');
+            } else {
+                item.classList.remove('today');
             }
         });
     </script>
