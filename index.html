@@ -48,6 +48,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .nav-links a:hover{color:var(--ink);}
 .nav-dl{background:var(--blue);color:white!important;padding:9px 20px;border-radius:100px;font-weight:700!important;font-size:13px!important;transition:background 0.2s!important;display:inline-flex;align-items:center;gap:6px;}
 .nav-dl:hover{background:var(--blue-2)!important;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.burger span{width:22px;height:2px;background:var(--ink-2);border-radius:2px;transition:all 0.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
 /* hero */
 .hero-bg{position:fixed;inset:0;background-image:linear-gradient(var(--ink-5) 1px,transparent 1px),linear-gradient(90deg,var(--ink-5) 1px,transparent 1px);background-size:48px 48px;opacity:0.3;pointer-events:none;z-index:0;}
@@ -279,7 +284,9 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 /* responsive */
 @media(max-width:960px){
   nav{padding:0 24px;}
-  .nav-links{display:none;}
+  .nav-links{display:none;position:fixed;top:66px;left:0;right:0;background:white;border-bottom:1px solid var(--ink-5);flex-direction:column;padding:20px 24px;gap:16px;}
+  .nav-links.open{display:flex;}
+  .burger{display:flex;}
   .hero{grid-template-columns:1fr;padding:120px 24px 60px;text-align:center;}
   .hero-h1{font-size:48px;}
   .hero-actions{justify-content:center;}
@@ -338,10 +345,11 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
     <div class="nav-logo-mark">M</div>
     Meritwise
   </a>
-  <ul class="nav-links">
+  <ul class="nav-links" id="navLinks">
     <li><a href="#features">Features</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#how">How it Works</a></li>
+    <li><a href="about.html">About</a></li>
     <li>
       <a href="https://drive.google.com/file/d/1sGBoUChUUug_h1RkNipNHm9iPWfTq3QP/view?usp=drive_link" target="_blank" class="nav-dl">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
@@ -349,6 +357,9 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
       </a>
     </li>
   </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1176,6 +1187,10 @@ document.querySelectorAll('a,button,.feat-card,.svc-card,.testi-card,.how-step,.
   el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));
 });
 
+const burger=document.getElementById('burger');
+const navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');navLinks.classList.remove('open');}));
 // scroll reveal
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('on'),60);});},{threshold:0.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
