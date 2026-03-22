@@ -1,1184 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ - Meritwise</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #0D6EFD;
-            --primary-dark: #0B5ED7;
-            --dark: #1a1a1a;
-            --light: #f8f9fa;
-            --gray: #666;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: #FFFFFF;
-            color: var(--dark);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 20px 0;
-            z-index: 1000;
-            
-        }
-
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 40px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-
-        .logo:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white !important;
-            padding: 12px 30px;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .download-btn::after {
-            display: none;
-        }
-
-        .download-btn:hover {
-            transform: translateY(-3px);
-            
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 150px 40px 80px;
-            text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, var(--light) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(13, 110, 253, 0.05) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: 0;
-        }
-
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-content h1 {
-            font-size: 64px;
-            font-weight: 900;
-            margin-bottom: 24px;
-            color: var(--dark);
-            letter-spacing: -2px;
-        }
-
-        .hero-content .highlight {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-content p {
-            font-size: 20px;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        /* Search Bar */
-        .search-container {
-            max-width: 700px;
-            margin: 50px auto 0;
-            position: relative;
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 20px 60px 20px 25px;
-            border: 2px solid #e9ecef;
-            border-radius: 20px;
-            font-size: 16px;
-            transition: all 0.3s;
-            background: white;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--primary);
-            
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 25px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 24px;
-            height: 24px;
-            fill: var(--gray);
-        }
-
-        /* FAQ Categories */
-        .faq-categories {
-            padding: 80px 40px 40px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-bottom: 80px;
-        }
-
-        .category-card {
-            background: white;
-            padding: 30px 25px;
-            border-radius: 20px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-
-        .category-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary);
-            
-        }
-
-        .category-card.active {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.05) 0%, rgba(11, 94, 215, 0.02) 100%);
-        }
-
-        .category-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(11, 94, 215, 0.05) 100%);
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.3s;
-        }
-
-        .category-card:hover .category-icon {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .category-icon svg {
-            width: 30px;
-            height: 30px;
-            fill: var(--primary);
-            transition: all 0.3s;
-        }
-
-        .category-card:hover .category-icon svg {
-            fill: white;
-        }
-
-        .category-card h3 {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--dark);
-            margin-bottom: 8px;
-        }
-
-        .category-card p {
-            font-size: 13px;
-            color: var(--gray);
-        }
-
-        /* FAQ Section */
-        .faq-section {
-            padding: 0 40px 120px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            overflow: hidden;
-            border: 2px solid #e9ecef;
-            transition: all 0.3s;
-        }
-
-        .faq-item:hover {
-            border-color: var(--primary);
-            
-        }
-
-        .faq-question {
-            padding: 30px 35px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-            user-select: none;
-        }
-
-        .faq-question h3 {
-            font-size: 19px;
-            font-weight: 800;
-            color: var(--dark);
-            flex: 1;
-            padding-right: 20px;
-        }
-
-        .faq-toggle {
-            width: 35px;
-            height: 35px;
-            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1) 0%, rgba(11, 94, 215, 0.05) 100%);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-            flex-shrink: 0;
-        }
-
-        .faq-toggle svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.active .faq-toggle {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-        }
-
-        .faq-item.active .faq-toggle svg {
-            fill: white;
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            padding: 0 35px 30px;
-        }
-
-        .faq-answer p {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.9;
-            margin-bottom: 15px;
-        }
-
-        .faq-answer p:last-child {
-            margin-bottom: 0;
-        }
-
-        .faq-answer ul {
-            margin: 15px 0;
-            padding-left: 25px;
-        }
-
-        .faq-answer li {
-            font-size: 16px;
-            color: var(--gray);
-            line-height: 1.9;
-            margin-bottom: 10px;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 40px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
-            opacity: 0.3;
-        }
-
-        .cta-section h2 {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section p {
-            font-size: 20px;
-            margin-bottom: 35px;
-            opacity: 0.95;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-btn {
-            padding: 18px 40px;
-            background: white;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 18px;
-            font-weight: 800;
-            font-size: 17px;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-5px);
-            
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 100px 40px 40px;
-        }
-
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 80px;
-            margin-bottom: 80px;
-        }
-
-        .footer-section h3 {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 25px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .footer-section h3 svg {
-            width: 26px;
-            height: 26px;
-            fill: var(--primary);
-        }
-
-        .footer-section p {
-            color: #999;
-            line-height: 1.9;
-            margin-bottom: 25px;
-            font-size: 15px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: #999;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 15px;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-            padding-left: 5px;
-        }
-
-        .footer-bottom {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding-top: 50px;
-            border-top: 1px solid #333;
-            text-align: center;
-            color: #666;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .footer-bottom svg {
-            width: 18px;
-            height: 18px;
-            fill: #ef4444;
-            animation: heartbeat 1.5s ease-in-out infinite;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-        }
-
-        /* Mobile Menu Toggle */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            cursor: pointer;
-        }
-
-        .menu-toggle span {
-            width: 28px;
-            height: 3px;
-            background: var(--dark);
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        /* Responsive */
-        @media (max-width: 968px) {
-            .nav-links {
-                display: none;
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: white;
-                flex-direction: column;
-                gap: 0;
-                padding: 20px;
-                
-                z-index: 999;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links a {
-                padding: 15px 0;
-                border-bottom: 1px solid #f0f0f0;
-            }
-
-            .nav-links a:last-child {
-                border-bottom: none;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .menu-toggle.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-
-            .menu-toggle.active span:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            .hero-content h1 {
-                font-size: 48px;
-            }
-
-            .categories-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 50px;
-            }
-
-            .cta-section h2 {
-                font-size: 38px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .hero-content h1 {
-                font-size: 36px;
-            }
-
-            .categories-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .faq-question {
-                padding: 25px 20px;
-            }
-
-            .faq-question h3 {
-                font-size: 17px;
-            }
-
-            .faq-item.active .faq-answer {
-                padding: 0 20px 25px;
-            }
-
-            .cta-section h2 {
-                font-size: 32px;
-            }
-
-            .nav-container {
-                padding: 0 20px;
-            }
-
-            .hero {
-                padding: 120px 20px 60px;
-            }
-
-            .faq-categories, .faq-section {
-                padding-left: 20px;
-                padding-right: 20px;
-            }
-
-            footer {
-                padding: 80px 20px 40px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ — Meritwise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue:     #1545B8;
+  --blue-dim: #EEF2FF;
+  --blue-mid: #C7D4FF;
+  --blue-2:   #2563EB;
+  --ink:      #09090B;
+  --ink-2:    #27272A;
+  --ink-3:    #52525B;
+  --ink-4:    #A1A1AA;
+  --ink-5:    #E4E4E7;
+  --white:    #FFFFFF;
+  --surface:  #F7F7F8;
+  --green:    #00875A;
+  --green-bg: #E3F9F0;
+  --gold:     #B54708;
+  --gold-bg:  #FEF0C7;
+  --sans:     'Sora', sans-serif;
+  --mono:     'IBM Plex Mono', monospace;
+  --serif:    'Instrument Serif', serif;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--ink-5);padding:0 48px;height:66px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:var(--sans);font-size:18px;font-weight:800;letter-spacing:-0.5px;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px;}
+.nav-logo-mark{width:32px;height:32px;background:var(--blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;}
+.nav-links a{font-size:13px;font-weight:600;color:var(--ink-3);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a.active{color:var(--blue);}
+.nav-dl{background:var(--blue);color:white!important;padding:9px 20px;border-radius:100px;font-weight:700!important;font-size:13px!important;transition:background 0.2s!important;display:inline-flex;align-items:center;gap:6px;}
+.nav-dl:hover{background:var(--blue-2)!important;}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.burger span{width:22px;height:2px;background:var(--ink-2);border-radius:2px;transition:all 0.3s;}
+.burger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.open span:nth-child(2){opacity:0;}
+.burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+
+/* HERO */
+.hero-bg{position:fixed;inset:0;background-image:linear-gradient(var(--ink-5) 1px,transparent 1px),linear-gradient(90deg,var(--ink-5) 1px,transparent 1px);background-size:48px 48px;opacity:0.3;pointer-events:none;z-index:0;}
+.hero{padding:120px 48px 72px;text-align:center;position:relative;z-index:2;}
+.hero-inner{max-width:700px;margin:0 auto;}
+.sec-tag{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:14px;}
+.sec-tag-dot{width:5px;height:5px;background:var(--blue);border-radius:50%;}
+.hero h1{font-family:var(--sans);font-size:clamp(36px,5vw,64px);font-weight:800;letter-spacing:-2.5px;line-height:1.0;color:var(--ink);margin-bottom:18px;}
+.hero h1 .em{font-style:italic;font-family:var(--serif);font-weight:400;color:var(--blue);}
+.hero p{font-size:16px;color:var(--ink-3);line-height:1.65;max-width:560px;margin:0 auto 36px;}
+
+/* SEARCH */
+.search-wrap{max-width:560px;margin:0 auto;position:relative;}
+.search-wrap input{width:100%;padding:14px 48px 14px 18px;border:1.5px solid var(--ink-5);border-radius:100px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink);background:white;outline:none;transition:border-color 0.2s;}
+.search-wrap input:focus{border-color:var(--blue);}
+.search-wrap input::placeholder{color:var(--ink-4);}
+.search-ico{position:absolute;right:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-4);pointer-events:none;}
+
+/* CATEGORIES */
+.cats-section{padding:48px 48px 0;max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+.cats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.cat-card{background:white;border:1.5px solid var(--ink-5);border-radius:16px;padding:22px 16px;text-align:center;cursor:pointer;transition:all 0.25s;}
+.cat-card:hover{border-color:var(--blue-mid);background:var(--blue-dim);transform:translateY(-3px);}
+.cat-card.active{border-color:var(--blue);background:var(--blue-dim);}
+.cat-ico{width:44px;height:44px;background:var(--surface);border:1px solid var(--ink-5);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:all 0.25s;color:var(--blue);}
+.cat-card.active .cat-ico,.cat-card:hover .cat-ico{background:var(--blue);border-color:var(--blue);color:white;}
+.cat-card h3{font-size:13px;font-weight:700;color:var(--ink-2);margin-bottom:3px;}
+.cat-card p{font-size:11px;color:var(--ink-4);}
+
+/* FAQ ITEMS */
+.faq-section{padding:40px 48px 100px;max-width:860px;margin:0 auto;position:relative;z-index:2;}
+
+.faq-item{background:white;border:1.5px solid var(--ink-5);border-radius:16px;margin-bottom:12px;overflow:hidden;transition:border-color 0.25s;}
+.faq-item:hover{border-color:var(--blue-mid);}
+.faq-item.active{border-color:var(--blue);}
+
+.faq-q{padding:22px 24px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;user-select:none;}
+.faq-q h3{font-size:15px;font-weight:700;color:var(--ink-2);flex:1;letter-spacing:-0.2px;line-height:1.4;}
+.faq-toggle{width:30px;height:30px;background:var(--blue-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.25s;}
+.faq-toggle svg{width:16px;height:16px;stroke:var(--blue);transition:transform 0.3s;fill:none;stroke-width:2.5;stroke-linecap:round;}
+.faq-item.active .faq-toggle{background:var(--blue);}
+.faq-item.active .faq-toggle svg{stroke:white;transform:rotate(180deg);}
+
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease, padding 0.3s ease;}
+.faq-item.active .faq-a{max-height:600px;padding:0 24px 24px;}
+.faq-a p{font-size:14px;color:var(--ink-3);line-height:1.75;margin-bottom:12px;}
+.faq-a p:last-child{margin-bottom:0;}
+.faq-a ul{margin:10px 0 12px 18px;display:flex;flex-direction:column;gap:7px;}
+.faq-a li{font-size:14px;color:var(--ink-3);line-height:1.65;}
+.faq-a strong{color:var(--ink-2);font-weight:600;}
+
+/* no results */
+.no-results{text-align:center;padding:48px 20px;color:var(--ink-4);display:none;}
+.no-results p{font-size:15px;font-weight:600;color:var(--ink-3);margin-bottom:6px;}
+.no-results span{font-size:13px;}
+
+/* CTA */
+.cta-section{padding:80px 48px;background:var(--blue);position:relative;overflow:hidden;text-align:center;}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
+.cta-inner{max-width:580px;margin:0 auto;position:relative;z-index:2;}
+.cta-section .sec-tag{color:rgba(255,255,255,0.6);}
+.cta-section .sec-tag-dot{background:rgba(255,255,255,0.4);}
+.cta-h2{font-family:var(--sans);font-size:clamp(32px,5vw,52px);font-weight:800;letter-spacing:-2px;color:white;margin-bottom:14px;line-height:1.0;}
+.cta-h2 .em{font-style:italic;font-family:var(--serif);font-weight:400;}
+.cta-sub{font-size:15px;color:rgba(255,255,255,0.65);line-height:1.65;margin-bottom:36px;}
+.btn-white{background:white;color:var(--blue);border:none;padding:15px 34px;border-radius:100px;font-family:var(--sans);font-size:14px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s,transform 0.2s;}
+.btn-white:hover{background:var(--blue-dim);transform:translateY(-2px);}
+
+/* FOOTER */
+footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white;}
+.footer-inner{max-width:1100px;margin:0 auto;}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:40px;}
+.footer-brand p{font-size:13px;color:var(--ink-4);line-height:1.7;margin-top:12px;}
+.footer-col h4{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:16px;}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.footer-col ul a{font-size:13px;color:var(--ink-3);text-decoration:none;transition:color 0.2s;}
+.footer-col ul a:hover{color:var(--ink);}
+.footer-bottom{padding-top:24px;border-top:1px solid var(--ink-5);display:flex;justify-content:space-between;align-items:center;}
+.footer-copy{font-size:12px;color:var(--ink-4);}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  nav{padding:0 24px;}
+  .nav-links{display:none;position:fixed;top:66px;left:0;right:0;background:white;border-bottom:1px solid var(--ink-5);flex-direction:column;padding:20px 24px;gap:16px;}
+  .nav-links.open{display:flex;}
+  .burger{display:flex;}
+  .hero,.cats-section,.faq-section,.cta-section{padding-left:24px;padding-right:24px;}
+  .cats-grid{grid-template-columns:1fr 1fr;}
+  footer{padding:48px 24px 28px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px;}
+  .footer-bottom{flex-direction:column;gap:12px;text-align:center;}
+}
+@media(max-width:500px){
+  .cats-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="https://res.cloudinary.com/dbived6ms/image/upload/v1768119981/meritwislogo_ucogmo.jpg" alt="Meritwise Logo" style="height: 40px; width: auto;">
-            </a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="index.html#features">Features</a>
-                <a href="index.html#contact">Contact</a>
-                <a href="about.html">About</a>
-                <a href="index.html#download" class="download-btn">Get Started</a>
-            </div>
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+
+<div class="hero-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="meritwise-landing.html" class="nav-logo">
+    <div class="nav-logo-mark">M</div>
+    Meritwise
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="meritwise-landing.html">Home</a></li>
+    <li><a href="meritwise-landing.html#features">Features</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="faq.html" class="active">FAQ</a></li>
+    <li>
+      <a href="https://drive.google.com/file/d/1sGBoUChUUug_h1RkNipNHm9iPWfTq3QP/view?usp=drive_link" target="_blank" class="nav-dl">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download App
+      </a>
+    </li>
+  </ul>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="sec-tag"><span class="sec-tag-dot"></span>Help Center</div>
+    <h1>Got <span class="em">questions?</span><br>We've got answers.</h1>
+    <p>Everything you need to know about using Meritwise. Can't find what you're looking for? Reach us on live chat — we're always around.</p>
+
+    <div class="search-wrap">
+      <input type="text" id="searchInput" placeholder="Search for an answer...">
+      <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats-section">
+  <div class="cats-grid">
+    <div class="cat-card active" data-cat="all">
+      <div class="cat-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </div>
+      <h3>All Questions</h3>
+      <p>View everything</p>
+    </div>
+    <div class="cat-card" data-cat="getting-started">
+      <div class="cat-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 8 12 12 14 14"/></svg>
+      </div>
+      <h3>Getting Started</h3>
+      <p>Setup & basics</p>
+    </div>
+    <div class="cat-card" data-cat="services">
+      <div class="cat-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Services</h3>
+      <p>Bills & top-ups</p>
+    </div>
+    <div class="cat-card" data-cat="account">
+      <div class="cat-ico">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <h3>My Account</h3>
+      <p>Wallet & security</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQs -->
+<section class="faq-section">
+
+  <div id="noResults" class="no-results">
+    <p>No results found</p>
+    <span>Try different keywords or browse the categories above</span>
+  </div>
+
+  <!-- GETTING STARTED -->
+  <div class="faq-item" data-cat="getting-started">
+    <div class="faq-q">
+      <h3>How do I create a Meritwise account?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Getting started takes less than 2 minutes:</p>
+      <ul>
+        <li>Download the Meritwise app and tap <strong>Sign Up</strong></li>
+        <li>Enter your phone number and verify with the OTP sent to you</li>
+        <li>Set up your security PIN</li>
+        <li>Complete your profile — that's it!</li>
+      </ul>
+      <p>No paperwork. No waiting. You're ready to go immediately.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="getting-started">
+    <div class="faq-q">
+      <h3>How do I add money to my Meritwise wallet?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Adding money is straightforward. Every Meritwise account comes with a dedicated virtual account number. Simply transfer from any Nigerian financial app or institution to that account number and your wallet is funded instantly.</p>
+      <p>The money shows up in seconds — no delays, no manual confirmation needed.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="getting-started">
+    <div class="faq-q">
+      <h3>Is there a minimum amount to fund my wallet?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>The minimum top-up amount is ₦100. There's no maximum limit on your wallet balance. The more you use Meritwise, the more cashback you earn on every transaction.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="getting-started">
+    <div class="faq-q">
+      <h3>Is Meritwise available across Nigeria?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Yes! Meritwise works for everyone across Nigeria. As long as you have an internet connection, you can access all features from any state. We support all Nigerian mobile networks and service providers nationwide.</p>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>What can I do on Meritwise?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Meritwise is your all-in-one financial companion. Here's what you can do:</p>
+      <ul>
+        <li><strong>Airtime & Data</strong> — Top up any network instantly (MTN, Glo, Airtel, 9mobile)</li>
+        <li><strong>Electricity</strong> — Pay your DISCO bill and get your token immediately</li>
+        <li><strong>Cable TV</strong> — Renew DStv, GOtv, Startimes without stress</li>
+        <li><strong>Send Money</strong> — Move money to other Meritwise users for free</li>
+        <li><strong>Lockfund</strong> — Lock your savings until a target date</li>
+        <li><strong>Communities</strong> — Pool contributions with your group, family or colleagues</li>
+        <li><strong>MeriChat</strong> — Chat and send money in the same conversation</li>
+        <li><strong>Earn Rewards</strong> — Get cashback on every transaction</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>How does cashback work?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Every time you pay a bill or top up on Meritwise, a small percentage goes straight back into your wallet. No redemption process. No points system. Just real money back, instantly.</p>
+      <ul>
+        <li>Cashback rates vary by service (typically 0.5% – 2%)</li>
+        <li>Credited to your wallet immediately after each transaction</li>
+        <li>Use it right away — no minimum threshold required</li>
+      </ul>
+      <p>The more you use Meritwise, the more you earn back.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>How fast are transactions processed?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Almost everything on Meritwise is instant:</p>
+      <ul>
+        <li><strong>Airtime & Data</strong> — delivered within seconds</li>
+        <li><strong>Electricity token</strong> — usually within 1–3 minutes</li>
+        <li><strong>Cable TV renewal</strong> — within 5 minutes</li>
+        <li><strong>Wallet-to-wallet transfers</strong> — instant, always</li>
+      </ul>
+      <p>If anything takes longer than expected, our support team is available around the clock.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>What if a transaction fails after I've been debited?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>This rarely happens, but when it does — your money is always safe. Failed transactions are automatically reversed to your wallet, usually within minutes and no later than 24 hours.</p>
+      <p>If your funds haven't returned after 24 hours, simply reach out to our support team with your transaction reference and we'll resolve it immediately.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>Are there any fees on Meritwise?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>We keep things fair and transparent:</p>
+      <ul>
+        <li><strong>Airtime, Data, Electricity, Cable TV</strong> — zero fees + you earn cashback</li>
+        <li><strong>Wallet top-up</strong> — completely free</li>
+        <li><strong>Wallet-to-wallet transfers</strong> — free between Meritwise users</li>
+        <li><strong>Cash out to external accounts</strong> — a small standard fee applies</li>
+      </ul>
+      <p>You'll always see the exact amount before confirming any transaction. No surprises.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>What is Lockfund and how does it work?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Lockfund is your discipline tool. Set aside a portion of your wallet balance, pick a future date, and those funds are locked away until then. You can't spend it even if you want to.</p>
+      <p>It's perfect for saving towards rent, a purchase, school fees, or any goal that needs a hard deadline. When the unlock date arrives, the funds return to your available balance automatically.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="services">
+    <div class="faq-q">
+      <h3>What are Communities on Meritwise?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Communities let you pool money with a group — your family, friends, office colleagues or anyone you trust. Every member contributes, every transaction is visible to all, and the group can set goals, track dues and manage funds together.</p>
+      <p>It's the digital version of Ajo or thrift, built to be transparent, automated and drama-free. No more arguments about who paid and who didn't.</p>
+    </div>
+  </div>
+
+  <!-- ACCOUNT -->
+  <div class="faq-item" data-cat="account">
+    <div class="faq-q">
+      <h3>How is my wallet and data kept safe?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Security is built into everything on Meritwise:</p>
+      <ul>
+        <li>All data is encrypted end-to-end</li>
+        <li>Every transaction requires your personal PIN</li>
+        <li>Suspicious activity is flagged and reviewed in real time</li>
+        <li>You receive instant alerts for every wallet activity</li>
+      </ul>
+      <p>We never share your personal information with anyone. Your privacy matters.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="account">
+    <div class="faq-q">
+      <h3>I forgot my PIN. How do I reset it?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Easy reset in a few steps:</p>
+      <ul>
+        <li>Open the Meritwise app and tap <strong>Forgot PIN?</strong> on the login screen</li>
+        <li>Verify your identity with a one-time code sent to your phone number</li>
+        <li>Create and confirm your new PIN</li>
+      </ul>
+      <p>Tip: pick something memorable but not obvious — avoid sequences like 1234 or your birth year.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="account">
+    <div class="faq-q">
+      <h3>Can I use Meritwise on more than one device?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>Yes, your Meritwise account works on any device. When you sign in on a new device, we'll send a verification code to confirm it's really you. For your protection, other active sessions may be signed out when you log in from a new device.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="account">
+    <div class="faq-q">
+      <h3>Can I get a refund if I paid the wrong number or account?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>It depends on the type of transaction:</p>
+      <ul>
+        <li><strong>Airtime/Data to a wrong number</strong> — once delivered, it can't be recalled. Always double-check before tapping confirm.</li>
+        <li><strong>Failed transactions</strong> — automatically refunded within 24 hours</li>
+        <li><strong>Duplicate charges</strong> — contact support immediately with the details</li>
+        <li><strong>Service not delivered</strong> — report within 24 hours for a full resolution</li>
+      </ul>
+      <p>When in doubt, reach our team right away — the faster you report, the faster we resolve.</p>
+    </div>
+  </div>
+
+  <div class="faq-item" data-cat="account">
+    <div class="faq-q">
+      <h3>How do I reach Meritwise support?</h3>
+      <div class="faq-toggle"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></div>
+    </div>
+    <div class="faq-a">
+      <p>We're always available. Pick whatever works for you:</p>
+      <ul>
+        <li><strong>Live Chat</strong> — right inside the app, fastest response</li>
+        <li><strong>WhatsApp</strong> — <a href="https://wa.me/2347052471886" target="_blank" style="color:var(--blue);font-weight:600;">+234 705 247 1886</a></li>
+        <li><strong>Phone</strong> — <a href="tel:+2347062377546" style="color:var(--blue);font-weight:600;">+234 706 237 7546</a></li>
+        <li><strong>Email</strong> — <a href="mailto:support@meritwise.app" style="color:var(--blue);font-weight:600;">support@meritwise.app</a></li>
+      </ul>
+      <p>Our team is available 24/7. We typically respond within minutes.</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <div class="sec-tag" style="justify-content:center;"><span class="sec-tag-dot"></span>Still Need Help?</div>
+    <h2 class="cta-h2">Chat with us<br><span class="em">anytime.</span></h2>
+    <p class="cta-sub">Download Meritwise and tap the chat icon — our team is always a message away.</p>
+    <a href="https://drive.google.com/file/d/1sGBoUChUUug_h1RkNipNHm9iPWfTq3QP/view?usp=drive_link" target="_blank" class="btn-white">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Download Meritwise
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="meritwise-landing.html" class="nav-logo"><div class="nav-logo-mark">M</div>Meritwise</a>
+        <p style="margin-top:12px;">Nigeria's smartest digital wallet. Send money, pay bills, save smarter and grow together — all in one app.</p>
+        <div style="margin-top:12px;font-size:12px;color:var(--ink-4);display:flex;align-items:flex-start;gap:6px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="1.8" stroke-linecap="round" style="flex-shrink:0;margin-top:1px;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Suite 5, Tamal Plaza, Karshi, Abuja.
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Frequently Asked <span class="highlight">Questions</span></h1>
-            <p>Find answers to common questions about Meritwise. Can't find what you're looking for? Contact our support team in the app.</p>
-        </div>
-
-        <div class="search-container">
-            <input type="text" class="search-box" id="searchInput" placeholder="Search for answers...">
-            <svg class="search-icon" viewBox="0 0 24 24">
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-            </svg>
-        </div>
-    </section>
-
-    <!-- FAQ Categories -->
-    <section class="faq-categories">
-        <div class="categories-grid">
-            <div class="category-card active" data-category="all">
-                <div class="category-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
-                    </svg>
-                </div>
-                <h3>All Questions</h3>
-                <p>View all FAQs</p>
-            </div>
-
-            <div class="category-card" data-category="getting-started">
-                <div class="category-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
-                </div>
-                <h3>Getting Started</h3>
-                <p>Setup & basics</p>
-            </div>
-
-            <div class="category-card" data-category="payments">
-                <div class="category-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-                    </svg>
-                </div>
-                <h3>Payments</h3>
-                <p>Transactions & bills</p>
-            </div>
-
-            <div class="category-card" data-category="security">
-                <div class="category-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
-                    </svg>
-                </div>
-                <h3>Security</h3>
-                <p>Account & safety</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <!-- Getting Started -->
-        <div class="faq-item" data-category="getting-started">
-            <div class="faq-question">
-                <h3>How do I create a Meritwise account?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Creating a Meritwise account is simple and takes less than 2 minutes:</p>
-                <ul>
-                    <li>Download the Meritwise app from Google Play Store or Apple App Store</li>
-                    <li>Click "Sign Up" and enter your phone number</li>
-                    <li>Verify your phone number with the OTP sent to you</li>
-                    <li>Set up your security PIN</li>
-                    <li>Complete your profile with basic information</li>
-                    <li>You're all set! Start enjoying seamless payments</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="getting-started">
-            <div class="faq-question">
-                <h3>How do I fund my Meritwise wallet?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>You can fund your wallet through multiple convenient methods:</p>
-                <ul>
-                    <li><strong>Bank Transfer:</strong> Transfer from any Nigerian bank to your unique Meritwise account number</li>
-                    <li><strong>Debit Card:</strong> Add funds instantly using your ATM card</li>
-                    <li><strong>USSD:</strong> Dial the provided USSD code from any phone</li>
-                    <li><strong>Bank Branch:</strong> Make deposits at any participating bank</li>
-                </ul>
-                <p>All funding methods are instant and secure. Funds reflect in your wallet immediately.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="getting-started">
-            <div class="faq-question">
-                <h3>Is there a minimum amount to fund my wallet?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Yes, the minimum funding amount is ₦100. There's no maximum limit, but individual transactions may have limits based on your verification level. Complete your KYC to enjoy higher transaction limits.</p>
-            </div>
-        </div>
-
-        <!-- Payments -->
-        <div class="faq-item" data-category="payments">
-            <div class="faq-question">
-                <h3>What services can I pay for on Meritwise?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Meritwise offers a comprehensive range of bill payment services:</p>
-                <ul>
-                    <li><strong>Airtime & Data:</strong> All Nigerian networks (MTN, Glo, Airtel, 9mobile)</li>
-                    <li><strong>Electricity Bills:</strong> All DISCOs nationwide (prepaid & postpaid)</li>
-                    <li><strong>Cable TV:</strong> DSTV, GOTV, Startimes subscriptions</li>
-                    <li><strong>Money Transfer:</strong> Send to any bank account or Meritwise user</li>
-                    <li><strong>Internet Services:</strong> Smile, Spectranet, and more</li>
-                </ul>
-                <p>We're constantly adding new services to make your life easier!</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="payments">
-            <div class="faq-question">
-                <h3>How do cashback rewards work?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Earn money back on every transaction you make on Meritwise!</p>
-                <p><strong>How it works:</strong></p>
-                <ul>
-                    <li>Every bill payment earns you cashback (typically 0.5% - 2% depending on the service)</li>
-                    <li>Cashback is credited instantly to your wallet</li>
-                    <li>No minimum threshold - use your cashback immediately</li>
-                    <li>The more you transact, the more you earn</li>
-                </ul>
-                <p>Check the app for current cashback rates on different services.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="payments">
-            <div class="faq-question">
-                <h3>How long do transactions take to process?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Transaction processing times vary by service:</p>
-                <ul>
-                    <li><strong>Airtime & Data:</strong> Instant (usually within seconds)</li>
-                    <li><strong>Electricity:</strong> Instant (token delivered within 1-5 minutes)</li>
-                    <li><strong>Cable TV:</strong> Within 5-10 minutes</li>
-                    <li><strong>Bank Transfers:</strong> Instant during banking hours</li>
-                </ul>
-                <p>Most transactions are completed within minutes. If you experience delays beyond the stated time, contact our in-app support.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="payments">
-            <div class="faq-question">
-                <h3>What if my transaction fails but I was debited?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Don't worry! Failed transactions are automatically reversed to your wallet within 24 hours (usually much faster). If your funds aren't returned within 24 hours:</p>
-                <ul>
-                    <li>Contact our in-app support with your transaction reference</li>
-                    <li>Our team will investigate and resolve the issue promptly</li>
-                    <li>You'll receive a full refund to your wallet</li>
-                </ul>
-                <p>We track all transactions and ensure no funds are lost.</p>
-            </div>
-        </div>
-
-        <!-- Security -->
-        <div class="faq-item" data-category="security">
-            <div class="faq-question">
-                <h3>How secure is Meritwise?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Your security is our top priority. Meritwise employs multiple layers of protection:</p>
-                <ul>
-                    <li><strong>Bank-Grade Encryption:</strong> All data is encrypted using 256-bit SSL/TLS</li>
-                    <li><strong>Secure PIN:</strong> Transactions require your unique 4-digit PIN</li>
-                    <li><strong>Two-Factor Authentication:</strong> Optional 2FA for added security</li>
-                    <li><strong>Fraud Detection:</strong> Real-time monitoring of suspicious activities</li>
-                    <li><strong>Secure Servers:</strong> Your data is stored on protected servers</li>
-                </ul>
-                <p>We never share your personal or financial information with third parties.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="security">
-            <div class="faq-question">
-                <h3>What should I do if I forget my PIN?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>You can easily reset your PIN:</p>
-                <ul>
-                    <li>Open the Meritwise app</li>
-                    <li>On the login screen, tap "Forgot PIN?"</li>
-                    <li>Verify your identity with OTP sent to your registered phone number</li>
-                    <li>Create a new 4-digit PIN</li>
-                    <li>Confirm your new PIN</li>
-                </ul>
-                <p>Make sure to choose a PIN that's memorable but secure. Don't use obvious combinations like 1234 or your birth year.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="security">
-            <div class="faq-question">
-                <h3>Can I use Meritwise on multiple devices?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Yes! You can access your Meritwise account on multiple devices. When you log in on a new device, you'll receive an OTP for verification. For security reasons, active sessions on other devices may be logged out when you sign in on a new device.</p>
-            </div>
-        </div>
-
-        <!-- General -->
-        <div class="faq-item" data-category="all">
-            <div class="faq-question">
-                <h3>Are there any transaction fees?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Meritwise keeps fees minimal and transparent:</p>
-                <ul>
-                    <li><strong>Airtime & Data:</strong> No fees! Plus you earn cashback</li>
-                    <li><strong>Electricity & Cable:</strong> No fees! Plus you earn cashback</li>
-                    <li><strong>Bank Transfers:</strong> Standard banking fees apply (₦10-50 depending on amount)</li>
-                    <li><strong>Wallet Funding:</strong> FREE via all methods</li>
-                </ul>
-                <p>We believe in fair pricing and helping you save money, not lose it to fees.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="all">
-            <div class="faq-question">
-                <h3>Can I get a refund if I made a wrong transaction?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Refund policies depend on the type of transaction:</p>
-                <p><strong>Airtime/Data to wrong number:</strong> Unfortunately, once airtime/data is delivered, it cannot be reversed. Always double-check the number before confirming.</p>
-                <p><strong>Failed transactions:</strong> Automatically refunded within 24 hours.</p>
-                <p><strong>Duplicate payments:</strong> Contact support immediately with transaction details for investigation.</p>
-                <p><strong>Service not delivered:</strong> Report within 24 hours for a full refund or reprocessing.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="all">
-            <div class="faq-question">
-                <h3>How do I contact customer support?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>We're here to help 24/7! You can reach us through:</p>
-                <ul>
-                    <li><strong>In-App Support:</strong> Chat with our team directly in the app (fastest response)</li>
-                    <li><strong>Email:</strong> support@meritwise.app</li>
-                    <li><strong>Phone:</strong> +234 706 237 7546</li>
-                    <li><strong>WhatsApp:</strong> +234 705 247 1886</li>
-                </ul>
-                <p>Our support team typically responds within minutes during business hours and within a few hours outside business hours.</p>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="all">
-            <div class="faq-question">
-                <h3>Is Meritwise available nationwide?</h3>
-                <div class="faq-toggle">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
-                    </svg>
-                </div>
-            </div>
-            <div class="faq-answer">
-                <p>Yes! Meritwise is available to all users across Nigeria. You can use our services from anywhere in the country as long as you have internet access. We support all Nigerian banks, mobile networks, and service providers.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Still Have Questions?</h2>
-        <p>Download the app and chat with our support team directly</p>
-        <a href="https://drive.google.com/uc?export=download&id=1MjjUJ2KF56f_3FkvyLka1TXJe259IyXQ" download class="cta-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
-            </svg>
-            Download Meritwise
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#">Wallet</a></li>
+          <li><a href="#">Lockfund</a></li>
+          <li><a href="#">Communities</a></li>
+          <li><a href="#">MeriChat</a></li>
+          <li><a href="#">Referral</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+2347062377546">+234 706 237 7546</a></li>
+          <li><a href="mailto:support@meritwise.app">support@meritwise.app</a></li>
+          <li><a href="https://wa.me/2347052471886" target="_blank">WhatsApp Us</a></li>
+          <li><a href="#">Live Chat — 24/7</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© <span id="copy-year"></span> Meritwise. All rights reserved.</div>
+      <div style="display:flex;gap:8px;">
+        <a href="https://x.com/MeritwiseApp" target="_blank" style="width:32px;height:32px;background:var(--ink);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.259 5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
         </a>
-    </section>
+        <a href="https://instagram.com/MeritwiseApp" target="_blank" style="width:32px;height:32px;background:linear-gradient(135deg,#E1306C,#F77737,#FCAF45);border-radius:8px;display:flex;align-items:center;justify-content:center;text-decoration:none;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-                    </svg>
-                    Meritwise
-                </h3>
-                <p>Your trusted all-in-one payment platform for bills, transfers, and more. Making financial transactions simple, fast, and rewarding.</p>
-            </div>
+<script>
+// Copyright year
+document.getElementById('copy-year').textContent = new Date().getFullYear();
 
-            <div class="footer-section">
-                <h3>Services</h3>
-                <ul class="footer-links">
-                    <li><a href="index.html#features">Airtime & Data</a></li>
-                    <li><a href="index.html#features">Electricity Bills</a></li>
-                    <li><a href="index.html#features">Cable TV</a></li>
-                    <li><a href="index.html#features">Money Transfer</a></li>
-                </ul>
-            </div>
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  burger.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
 
-            <div class="footer-section">
-                <h3>Company</h3>
-                <ul class="footer-links">
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
+// Accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    const open = item.classList.contains('active');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+    if (!open) item.classList.add('active');
+  });
+});
 
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <ul class="footer-links">
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="terms-conditions.html">Terms & Conditions</a></li>
-                </ul>
-            </div>
-        </div>
+// Category filter
+document.querySelectorAll('.cat-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const cat = card.getAttribute('data-cat');
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    document.getElementById('searchInput').value = '';
+    let visible = 0;
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const show = cat === 'all' || item.getAttribute('data-cat') === cat;
+      item.style.display = show ? 'block' : 'none';
+      item.classList.remove('active');
+      if (show) visible++;
+    });
+    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+  });
+});
 
-        <div class="footer-bottom">
-            <p>© 2026 Meritwise. All rights reserved. | Built with 
-                <svg viewBox="0 0 24 24">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-                in Nigeria
-            </p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuToggle.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        const links = document.querySelectorAll('.nav-links a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-            });
-        });
-
-        document.addEventListener('click', function(event) {
-            const isClickInsideNav = navLinks.contains(event.target);
-            const isClickOnToggle = menuToggle.contains(event.target);
-            
-            if (!isClickInsideNav && !isClickOnToggle && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                menuToggle.classList.remove('active');
-            }
-        });
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                const isActive = item.classList.contains('active');
-                
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-                
-                // Toggle current item
-                if (isActive) {
-                    item.classList.remove('active');
-                } else {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Category Filter
-        const categoryCards = document.querySelectorAll('.category-card');
-        
-        categoryCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const category = card.getAttribute('data-category');
-                
-                // Update active category
-                categoryCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-                
-                // Filter FAQ items
-                faqItems.forEach(item => {
-                    if (category === 'all' || item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                    item.classList.remove('active');
-                });
-            });
-        });
-
-        // Search Functionality
-        const searchInput = document.getElementById('searchInput');
-        
-        searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question h3').textContent.toLowerCase();
-                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-                
-                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-            
-            // Reset category filter when searching
-            if (searchTerm) {
-                categoryCards.forEach(c => c.classList.remove('active'));
-            } else {
-                categoryCards[0].classList.add('active');
-            }
-        });
-    </script>
+// Search
+document.getElementById('searchInput').addEventListener('input', function() {
+  const q = this.value.toLowerCase().trim();
+  document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+  if (!q) {
+    document.querySelectorAll('.cat-card')[0].classList.add('active');
+    document.querySelectorAll('.faq-item').forEach(i => { i.style.display='block'; i.classList.remove('active'); });
+    document.getElementById('noResults').style.display = 'none';
+    return;
+  }
+  let visible = 0;
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const show = text.includes(q);
+    item.style.display = show ? 'block' : 'none';
+    if (show) visible++;
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+});
+</script>
 </body>
 </html>
