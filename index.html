@@ -1061,11 +1061,11 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
         <div class="footer-col">
           <h4>Product</h4>
           <ul>
-            <li><a href="#">Wallet</a></li>
-            <li><a href="#">Lockfund</a></li>
-            <li><a href="#">Communities</a></li>
-            <li><a href="#">MeriChat</a></li>
-            <li><a href="#">Referral</a></li>
+            <li><a href="dashboard.html">Wallet</a></li>
+            <li><a href="lockfund.html">Lockfund</a></li>
+            <li><a href="ajo.html">Communities</a></li>
+            <li><a href="merichat.html">MeriChat</a></li>
+            <li><a href="referral-rewards.html">Referral</a></li>
           </ul>
         </div>
 
@@ -1073,11 +1073,11 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">Airtime &amp; Data</a></li>
-            <li><a href="#">Electricity</a></li>
-            <li><a href="#">Cable TV</a></li>
-            <li><a href="#">Transfers</a></li>
-            <li><a href="#">Request Money</a></li>
+            <li><a href="airtime-data.html">Airtime &amp; Data</a></li>
+            <li><a href="paybills.html">Electricity</a></li>
+            <li><a href="paybills.html">Cable TV</a></li>
+            <li><a href="transfer.html">Transfers</a></li>
+            <li><a href="request-money.html">Request Money</a></li>
           </ul>
         </div>
 
@@ -1103,9 +1103,9 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
               </a>
             </li>
             <li>
-              <a href="/cdn-cgi/l/email-protection#ea999f9a9a85989eaa878f98839e9d83998fc48b9a9a" style="display:flex;align-items:center;gap:7px;">
+              <a href="mailto:support@meritwise.app" style="display:flex;align-items:center;gap:7px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                <span class="__cf_email__" data-cfemail="80f3f5f0f0eff2f4c0ede5f2e9f4f7e9f3e5aee1f0f0">[email&#160;protected]</span>
+                support@meritwise.app
               </a>
             </li>
             <li>
@@ -1115,7 +1115,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
               </a>
             </li>
             <li>
-              <a href="#" style="display:flex;align-items:center;gap:7px;">
+              <a href="support-chat.html" style="display:flex;align-items:center;gap:7px;">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink-4)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 Live Chat — 24/7
               </a>
@@ -1167,7 +1167,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // cursor
 const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
@@ -1189,4 +1189,10 @@ document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 });
 
 // balance removed - phone shows real value
-document.getElementById('copy-year').textContent
+document.getElementById('copy-year').textContent = new Date().getFullYear();
+// Lockfund live seconds tick
+const lfSecs = document.getElementById('lf-secs');
+if(lfSecs){ let s=14; setInterval(()=>{ s=s>0?s-1:59; lfSecs.textContent=String(s).padStart(2,'0'); },1000); }
+</script>
+</body>
+</html>
