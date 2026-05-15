@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy – Meritwise</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #40196B;
+    --purple-dark: #361558;
+    --purple-light: #F0EBFF;
+    --bg: #F7F7F8;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: #09090B;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--purple);
+    padding: 20px 16px 14px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background 0.3s;
+  }
+
+  .back-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; flex-shrink: 0;
+  }
+  .back-btn svg { display: block; }
+
+  .header-title { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+  .header-sub   { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+
+  /* MAIN CONTENT */
+  .page { padding: 20px 16px 60px; }
+
+  /* BANNER */
+  .banner {
+    background: var(--purple-light);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px; padding: 16px;
+    margin-bottom: 10px;
+  }
+  .banner-date { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 4px; }
+  .banner-text { font-size: 12px; color: var(--purple-dark); line-height: 1.6; }
+
+  /* NDPR BADGE */
+  .ndpr-row { margin-bottom: 16px; }
+  .ndpr-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: white;
+    padding: 7px 14px; border-radius: 20px;
+    border: 1.5px solid var(--purple);
+  }
+  .ndpr-text { font-size: 12px; font-weight: 700; color: var(--purple); }
+
+  /* SECTION CARDS */
+  .sections-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+  .section-card { background: white; border-radius: 16px; overflow: hidden; }
+
+  .section-title-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid #F7F7F8;
+  }
+  .num-badge {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .num-badge-txt { color: white; font-size: 13px; font-weight: 800; }
+  .section-title { font-size: 14px; font-weight: 800; color: #09090B; flex: 1; letter-spacing: -0.2px; }
+
+  .section-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* CONTENT BLOCKS */
+  .body-text { font-size: 13px; color: #52525B; line-height: 1.6; font-weight: 500; }
+  .subtitle   { font-size: 13px; font-weight: 700; color: #27272A; margin-top: 2px; }
+
+  .bullet-row { display: flex; gap: 10px; margin-bottom: 5px; }
+  .bullet-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); margin-top: 7px; flex-shrink: 0;
+  }
+  .bullet-text { font-size: 13px; color: #52525B; line-height: 1.6; flex: 1; font-weight: 500; }
+
+  .info-box {
+    background: var(--purple-light);
+    border-left: 3px solid var(--purple);
+    border-radius: 8px; padding: 12px;
+  }
+  .info-text { font-size: 12.5px; color: var(--purple); font-weight: 600; line-height: 1.55; }
+
+  .warn-box {
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+    border-radius: 8px; padding: 12px;
+  }
+  .warn-text { font-size: 12.5px; color: #78350f; font-weight: 600; line-height: 1.55; }
+
+  /* TABLE */
+  .table-box { background: #F7F7F8; border-radius: 10px; overflow: hidden; }
+  .table-row { display: flex; padding: 11px; gap: 10px; }
+  .table-row:not(:last-child) { border-bottom: 1px solid #E4E4E7; }
+  .table-label  { flex: 0 0 42%; font-size: 12px; font-weight: 700; color: #27272A; }
+  .table-detail { flex: 0 0 58%; font-size: 12px; color: #52525B; font-weight: 500; }
+
+  /* RIGHTS */
+  .rights-box { background: var(--purple-light); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .right-row  { display: flex; gap: 10px; }
+  .right-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--purple-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .right-label  { font-size: 12.5px; font-weight: 700; color: var(--purple); margin-bottom: 2px; }
+  .right-detail { font-size: 12px; color: var(--purple-dark); line-height: 1.5; }
+
+  /* CONTACT */
+  .contact-box { background: #F7F7F8; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .contact-title { font-size: 13px; font-weight: 700; color: #09090B; margin-bottom: 4px; }
+  .contact-row   { font-size: 13px; color: #52525B; font-weight: 500; }
+  .contact-link  { color: var(--purple); font-weight: 700; text-decoration: none; }
+  .contact-link:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  .footer-card {
+    margin-top: 20px; background: white; border-radius: 16px;
+    padding: 20px; text-align: center; display: flex;
+    flex-direction: column; gap: 8px; align-items: center;
+  }
+  .footer-title { font-size: 15px; font-weight: 800; color: #09090B; margin-bottom: 4px; }
+  .footer-link  { font-size: 13px; color: var(--purple); font-weight: 700; text-decoration: none; }
+  .footer-link:hover { text-decoration: underline; }
+  .footer-note  { font-size: 11px; color: #A1A1AA; margin-top: 8px; }
+
+  @media (max-width: 480px) {
+    .header-title { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header" id="header">
+  <button class="back-btn" onclick="history.back()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <div>
+    <div class="header-title">Privacy Policy</div>
+    <div class="header-sub">How we protect and use your information</div>
+  </div>
+</div>
+
+<div class="page">
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-date">Last Updated: December 18, 2025</div>
+    <div class="banner-text">This Privacy Policy explains how Meritwise collects, uses, discloses, and safeguards your information when you use our services.</div>
+  </div>
+
+  <!-- NDPR BADGE -->
+  <div class="ndpr-row">
+    <div class="ndpr-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#40196B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span class="ndpr-text">NDPR Principles Applied</span>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections-wrap" id="sections"></div>
+
+  <!-- FOOTER -->
+  <div class="footer-card">
+    <div class="footer-title">Questions About Your Privacy?</div>
+    <a class="footer-link" href="mailto:support@meritwise.app">support@meritwise.app</a>
+    <a class="footer-link" href="tel:+2347062377546">+234 706 237 7546</a>
+    <div class="footer-note">© 2026 Meritwise Enterprises Limited. All rights reserved.</div>
+    <div class="footer-note">RC: 1894127 | 6, Alakija Street, Ibeju Lekki, Lagos State, Nigeria</div>
+  </div>
+</div>
+
+<script>
+const SECTIONS = [
+  {
+    num: '1',
+    title: 'Information We Collect',
+    content: [
+      { type: 'text', value: 'We collect different types of information to provide and improve our services to you.' },
+      { type: 'subtitle', value: '1.1 Personal Information' },
+      { type: 'bullets', value: ['Full name, date of birth, gender, nationality', 'Email address, phone number, residential address', 'Government-issued ID (NIN, Driver\'s License, Passport), BVN, selfie photographs', 'Bank account details, card information, transaction history, wallet balance', 'Username, password (encrypted), security questions'] },
+      { type: 'subtitle', value: '1.2 Automatically Collected Information' },
+      { type: 'bullets', value: ['Device type, operating system, unique device identifiers', 'App features accessed, time spent, interaction patterns', 'IP address, approximate geographic location (with your permission)', 'Transaction amounts, dates, merchant information, payment methods', 'Access times, error logs, system activity'] },
+      { type: 'subtitle', value: '1.3 Information from Third Parties' },
+      { type: 'bullets', value: ['Identity verification services (BVN validation, NIN verification)', 'Payment processors and financial institutions', 'Fraud prevention and security services'] },
+      { type: 'info', value: 'We only collect information necessary to provide our services, comply with legal requirements, and improve user experience.' },
+    ],
+  },
+  {
+    num: '2',
+    title: 'How We Use Your Information',
+    content: [
+      { type: 'text', value: 'We use your information for the following purposes:' },
+      { type: 'table', value: [
+        { label: 'Service Delivery', detail: 'Process transactions, manage your account, provide customer support' },
+        { label: 'Verification & Security', detail: 'Verify your identity, prevent fraud, detect suspicious activities' },
+        { label: 'Communication', detail: 'Send transaction confirmations, updates, promotional offers' },
+        { label: 'Personalization', detail: 'Customize your experience, recommend relevant services' },
+        { label: 'Analytics', detail: 'Analyze usage patterns, improve features, develop new services' },
+        { label: 'Legal Compliance', detail: 'Comply with laws, respond to legal requests, enforce our terms' },
+      ]},
+      { type: 'subtitle', value: 'How Meritwise Generates Revenue' },
+      { type: 'bullets', value: [
+        'Airtime purchases',
+        'Data subscriptions',
+        'Cable TV payments (DSTV, GOTV, Startimes)',
+        'Electricity bill payments',
+        'Community service fees (1% fee on dues payments, event contributions, and loan disbursements)',
+        'Community loan interest share (30% of 10% monthly interest earned by the community)',
+      ]},
+      { type: 'info', value: 'We do not earn money from wallet balances, peer-to-peer transfers, or bank withdrawals. Your funds remain yours. Community members retain 70% of all interest earned on loans.' },
+      { type: 'warning', value: 'You can opt out of promotional communications at any time through app settings or by contacting us.' },
+    ],
+  },
+  {
+    num: '3',
+    title: 'Information Sharing & Disclosure',
+    content: [
+      { type: 'text', value: 'We do not sell your personal information. We may share your information in the following circumstances:' },
+      { type: 'subtitle', value: '3.1 Service Providers' },
+      { type: 'bullets', value: ['Payment processors (Paystack)', 'Cloud hosting providers', 'Identity verification services', 'Customer support platforms', 'SMS and email service providers'] },
+      { type: 'subtitle', value: '3.2 Service Partners' },
+      { type: 'bullets', value: ['Mobile network operators (MTN, Airtel, Glo, 9mobile)', 'Electricity distribution companies', 'Cable TV providers (DSTV, GOTV, Startimes)', 'Financial institutions for payment processing'] },
+      { type: 'subtitle', value: '3.3 Legal Requirements' },
+      { type: 'bullets', value: ['Comply with court orders, subpoenas, or legal processes', 'Respond to government or regulatory requests', 'Protect our rights, property, or safety', 'Investigate fraud or security breaches'] },
+      { type: 'info', value: 'All third parties we work with are required to maintain the same level of data protection and security standards that we uphold.' },
+    ],
+  },
+  {
+    num: '4',
+    title: 'Data Security',
+    content: [
+      { type: 'subtitle', value: '4.1 Technical Safeguards' },
+      { type: 'bullets', value: ['Industry-standard SSL/TLS encryption for data in transit', 'Strong encryption for data at rest', 'Role-based access controls and enhanced authentication', 'Firewalls, intrusion detection systems, DDoS protection', 'Bcrypt hashing for password storage'] },
+      { type: 'subtitle', value: '4.2 Your Security Role' },
+      { type: 'bullets', value: ['Use strong, unique passwords', 'Enable two-factor authentication', 'Never share your password, PIN, or OTP', 'Log out after using shared devices', 'Report suspicious activities immediately'] },
+      { type: 'warning', value: 'In the unlikely event of a security breach affecting your data, we will notify affected users and relevant authorities in accordance with applicable laws.' },
+    ],
+  },
+  {
+    num: '5',
+    title: 'Your Privacy Rights',
+    content: [
+      { type: 'text', value: 'Under the Nigerian Data Protection Regulation (NDPR), you have the following rights:' },
+      { type: 'rights', value: [
+        { label: 'Right to Access', detail: 'Request a copy of your personal data we hold' },
+        { label: 'Right to Rectification', detail: 'Correct inaccurate or incomplete information' },
+        { label: 'Right to Erasure', detail: 'Request deletion of your data (subject to legal obligations)' },
+        { label: 'Right to Portability', detail: 'Receive your data in a structured, machine-readable format' },
+        { label: 'Right to Object', detail: 'Opt out of certain data processing activities' },
+        { label: 'Right to Withdraw Consent', detail: 'Revoke consent for data processing at any time' },
+      ]},
+      { type: 'subtitle', value: 'How to Exercise Your Rights' },
+      { type: 'bullets', value: ['Access settings in the Meritwise app', 'Email us at support@meritwise.app', 'Contact our Data Protection Officer', 'We will respond to your request within 30 days'] },
+    ],
+  },
+  {
+    num: '6',
+    title: 'Cookies & Tracking',
+    content: [
+      { type: 'bullets', value: ['Essential Cookies: Required for basic platform functionality and security', 'Performance Cookies: Help us understand how users interact with our services', 'Functional Cookies: Remember your preferences and settings', 'Analytics Cookies: Collect data on usage patterns and performance metrics'] },
+      { type: 'info', value: 'You can control cookies through app settings or device settings. Disabling essential cookies may affect platform functionality.' },
+    ],
+  },
+  {
+    num: '7',
+    title: 'Data Retention',
+    content: [
+      { type: 'table', value: [
+        { label: 'Account Information', detail: 'Active period + 7 years after closure' },
+        { label: 'Transaction Records', detail: 'Minimum 7 years (financial regulations)' },
+        { label: 'KYC Documents', detail: '7 years after account closure' },
+        { label: 'Marketing Data', detail: 'Until you opt out or withdraw consent' },
+        { label: 'Support Comms', detail: '3 years from last interaction' },
+        { label: 'Analytics Data', detail: 'Individual data: 2 years' },
+      ]},
+      { type: 'warning', value: 'We may retain certain information longer if required by law, regulation, or ongoing legal proceedings.' },
+    ],
+  },
+  {
+    num: '8',
+    title: 'Third-Party Services',
+    content: [
+      { type: 'text', value: 'Our platform may contain links to or integrate with third-party services. When you interact with them, their own privacy policies apply.' },
+      { type: 'bullets', value: ['We carefully select and vet all third-party partners', 'We require partners to maintain adequate data protection standards', 'We are not responsible for third-party privacy practices'] },
+      { type: 'info', value: "Always verify you're interacting with legitimate service providers when making payments through Meritwise." },
+    ],
+  },
+  {
+    num: '9',
+    title: "Children's Privacy",
+    content: [
+      { type: 'text', value: 'Meritwise is not intended for use by children under the age of 18.' },
+      { type: 'bullets', value: ['We do not knowingly collect personal information from children under 18', 'Users must be at least 18 years old to create an account', 'If we discover that a child has provided personal information, we will delete it immediately'] },
+      { type: 'warning', value: 'If you are a parent or guardian and believe your child has provided us with personal information, contact us immediately at support@meritwise.app' },
+    ],
+  },
+  {
+    num: '10',
+    title: 'Changes to This Policy',
+    content: [
+      { type: 'text', value: 'We may update this Privacy Policy from time to time. We will notify you by updating the "Last Updated" date, sending email notifications for significant changes, and displaying in-app notifications.' },
+      { type: 'info', value: 'Continued use of Meritwise after changes are posted constitutes acceptance of the updated policy.' },
+    ],
+  },
+  {
+    num: '11',
+    title: 'International Data Transfers',
+    content: [
+      { type: 'bullets', value: ['We use cloud services with servers in multiple locations', 'Data transfers comply with applicable data protection laws', 'We implement appropriate safeguards (Standard Contractual Clauses)', 'Your data receives the same level of protection regardless of location'] },
+    ],
+  },
+  {
+    num: '12',
+    title: 'Data Protection Officer',
+    content: [
+      { type: 'text', value: 'We have appointed a Data Protection Officer (DPO) to oversee our privacy and data protection practices.' },
+      { type: 'contact', value: { email: 'support@meritwise.app', phone: '+2347062377546', address: '6, Alakija Street, Ibeju Lekki, Lagos State, Nigeria' } },
+    ],
+  },
+];
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+const checkSvg = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#40196B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+function renderBlock(block) {
+  switch (block.type) {
+    case 'text':
+      return `<p class="body-text">${escapeHtml(block.value)}</p>`;
+
+    case 'subtitle':
+      return `<p class="subtitle">${escapeHtml(block.value)}</p>`;
+
+    case 'bullets':
+      return `<div>${block.value.map(item =>
+        `<div class="bullet-row"><div class="bullet-dot"></div><span class="bullet-text">${escapeHtml(item)}</span></div>`
+      ).join('')}</div>`;
+
+    case 'info':
+      return `<div class="info-box"><p class="info-text">${escapeHtml(block.value)}</p></div>`;
+
+    case 'warning':
+      return `<div class="warn-box"><p class="warn-text">${escapeHtml(block.value)}</p></div>`;
+
+    case 'table':
+      return `<div class="table-box">${block.value.map(row =>
+        `<div class="table-row"><span class="table-label">${escapeHtml(row.label)}</span><span class="table-detail">${escapeHtml(row.detail)}</span></div>`
+      ).join('')}</div>`;
+
+    case 'rights':
+      return `<div class="rights-box">${block.value.map(right =>
+        `<div class="right-row">
+          <div class="right-check">${checkSvg}</div>
+          <div>
+            <div class="right-label">${escapeHtml(right.label)}</div>
+            <div class="right-detail">${escapeHtml(right.detail)}</div>
+          </div>
+        </div>`
+      ).join('')}</div>`;
+
+    case 'contact':
+      return `<div class="contact-box">
+        <div class="contact-title">Contact Our Data Protection Officer</div>
+        <div class="contact-row">Email: <a class="contact-link" href="mailto:${block.value.email}">${block.value.email}</a></div>
+        <div class="contact-row">Phone: <a class="contact-link" href="tel:${block.value.phone}">${block.value.phone}</a></div>
+        <div class="contact-row">Address: ${escapeHtml(block.value.address)}</div>
+      </div>`;
+
+    default: return '';
+  }
+}
+
+function renderSections() {
+  const container = document.getElementById('sections');
+  let html = '';
+  SECTIONS.forEach(sec => {
+    html += `<div class="section-card">
+      <div class="section-title-row">
+        <div class="num-badge"><span class="num-badge-txt">${sec.num}</span></div>
+        <span class="section-title">${escapeHtml(sec.title)}</span>
+      </div>
+      <div class="section-body">
+        ${sec.content.map(renderBlock).join('')}
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// Subtle header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if (window.scrollY > 60) header.style.background = '#361558';
+  else header.style.background = '#40196B';
+});
+
+renderSections();
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Privacy Policy – Meritwise</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --purple: #40196B;
+    --purple-dark: #361558;
+    --purple-light: #F0EBFF;
+    --bg: #F7F7F8;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: #09090B;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    position: sticky; top: 0; z-index: 999;
+    background: var(--purple);
+    padding: 20px 16px 14px;
+    display: flex; align-items: center; gap: 12px;
+    transition: background 0.3s;
+  }
+
+  .back-btn {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border: none; flex-shrink: 0;
+  }
+  .back-btn svg { display: block; }
+
+  .header-title { font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.3px; }
+  .header-sub   { font-size: 12px; color: rgba(255,255,255,0.8); margin-top: 2px; }
+
+  /* MAIN CONTENT */
+  .page { padding: 20px 16px 60px; }
+
+  /* BANNER */
+  .banner {
+    background: var(--purple-light);
+    border-left: 4px solid var(--purple);
+    border-radius: 12px; padding: 16px;
+    margin-bottom: 10px;
+  }
+  .banner-date { font-size: 12px; font-weight: 700; color: var(--purple); margin-bottom: 4px; }
+  .banner-text { font-size: 12px; color: var(--purple-dark); line-height: 1.6; }
+
+  /* NDPR BADGE */
+  .ndpr-row { margin-bottom: 16px; }
+  .ndpr-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: white;
+    padding: 7px 14px; border-radius: 20px;
+    border: 1.5px solid var(--purple);
+  }
+  .ndpr-text { font-size: 12px; font-weight: 700; color: var(--purple); }
+
+  /* SECTION CARDS */
+  .sections-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+  .section-card { background: white; border-radius: 16px; overflow: hidden; }
+
+  .section-title-row {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 16px 12px;
+    border-bottom: 1px solid #F7F7F8;
+  }
+  .num-badge {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: var(--purple);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .num-badge-txt { color: white; font-size: 13px; font-weight: 800; }
+  .section-title { font-size: 14px; font-weight: 800; color: #09090B; flex: 1; letter-spacing: -0.2px; }
+
+  .section-body { padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+
+  /* CONTENT BLOCKS */
+  .body-text { font-size: 13px; color: #52525B; line-height: 1.6; font-weight: 500; }
+  .subtitle   { font-size: 13px; font-weight: 700; color: #27272A; margin-top: 2px; }
+
+  .bullet-row { display: flex; gap: 10px; margin-bottom: 5px; }
+  .bullet-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--purple); margin-top: 7px; flex-shrink: 0;
+  }
+  .bullet-text { font-size: 13px; color: #52525B; line-height: 1.6; flex: 1; font-weight: 500; }
+
+  .info-box {
+    background: var(--purple-light);
+    border-left: 3px solid var(--purple);
+    border-radius: 8px; padding: 12px;
+  }
+  .info-text { font-size: 12.5px; color: var(--purple); font-weight: 600; line-height: 1.55; }
+
+  .warn-box {
+    background: #fef3c7;
+    border-left: 3px solid #f59e0b;
+    border-radius: 8px; padding: 12px;
+  }
+  .warn-text { font-size: 12.5px; color: #78350f; font-weight: 600; line-height: 1.55; }
+
+  /* TABLE */
+  .table-box { background: #F7F7F8; border-radius: 10px; overflow: hidden; }
+  .table-row { display: flex; padding: 11px; gap: 10px; }
+  .table-row:not(:last-child) { border-bottom: 1px solid #E4E4E7; }
+  .table-label  { flex: 0 0 42%; font-size: 12px; font-weight: 700; color: #27272A; }
+  .table-detail { flex: 0 0 58%; font-size: 12px; color: #52525B; font-weight: 500; }
+
+  /* RIGHTS */
+  .rights-box { background: var(--purple-light); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 10px; }
+  .right-row  { display: flex; gap: 10px; }
+  .right-check {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--purple-light);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .right-label  { font-size: 12.5px; font-weight: 700; color: var(--purple); margin-bottom: 2px; }
+  .right-detail { font-size: 12px; color: var(--purple-dark); line-height: 1.5; }
+
+  /* CONTACT */
+  .contact-box { background: #F7F7F8; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .contact-title { font-size: 13px; font-weight: 700; color: #09090B; margin-bottom: 4px; }
+  .contact-row   { font-size: 13px; color: #52525B; font-weight: 500; }
+  .contact-link  { color: var(--purple); font-weight: 700; text-decoration: none; }
+  .contact-link:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  .footer-card {
+    margin-top: 20px; background: white; border-radius: 16px;
+    padding: 20px; text-align: center; display: flex;
+    flex-direction: column; gap: 8px; align-items: center;
+  }
+  .footer-title { font-size: 15px; font-weight: 800; color: #09090B; margin-bottom: 4px; }
+  .footer-link  { font-size: 13px; color: var(--purple); font-weight: 700; text-decoration: none; }
+  .footer-link:hover { text-decoration: underline; }
+  .footer-note  { font-size: 11px; color: #A1A1AA; margin-top: 8px; }
+
+  @media (max-width: 480px) {
+    .header-title { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header" id="header">
+  <button class="back-btn" onclick="history.back()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+  <div>
+    <div class="header-title">Privacy Policy</div>
+    <div class="header-sub">How we protect and use your information</div>
+  </div>
+</div>
+
+<div class="page">
+  <!-- BANNER -->
+  <div class="banner">
+    <div class="banner-date">Last Updated: December 18, 2025</div>
+    <div class="banner-text">This Privacy Policy explains how Meritwise collects, uses, discloses, and safeguards your information when you use our services.</div>
+  </div>
+
+  <!-- NDPR BADGE -->
+  <div class="ndpr-row">
+    <div class="ndpr-badge">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#40196B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      <span class="ndpr-text">NDPR Principles Applied</span>
+    </div>
+  </div>
+
+  <!-- SECTIONS -->
+  <div class="sections-wrap" id="sections"></div>
+
+  <!-- FOOTER -->
+  <div class="footer-card">
+    <div class="footer-title">Questions About Your Privacy?</div>
+    <a class="footer-link" href="mailto:support@meritwise.app">support@meritwise.app</a>
+    <a class="footer-link" href="tel:+2347062377546">+234 706 237 7546</a>
+    <div class="footer-note">© 2026 Meritwise Enterprises Limited. All rights reserved.</div>
+    <div class="footer-note">RC: 1894127 | 6, Alakija Street, Ibeju Lekki, Lagos State, Nigeria</div>
+  </div>
+</div>
+
+<script>
+const SECTIONS = [
+  {
+    num: '1',
+    title: 'Information We Collect',
+    content: [
+      { type: 'text', value: 'We collect different types of information to provide and improve our services to you.' },
+      { type: 'subtitle', value: '1.1 Personal Information' },
+      { type: 'bullets', value: ['Full name, date of birth, gender, nationality', 'Email address, phone number, residential address', 'Government-issued ID (NIN, Driver\'s License, Passport), BVN, selfie photographs', 'Bank account details, card information, transaction history, wallet balance', 'Username, password (encrypted), security questions'] },
+      { type: 'subtitle', value: '1.2 Automatically Collected Information' },
+      { type: 'bullets', value: ['Device type, operating system, unique device identifiers', 'App features accessed, time spent, interaction patterns', 'IP address, approximate geographic location (with your permission)', 'Transaction amounts, dates, merchant information, payment methods', 'Access times, error logs, system activity'] },
+      { type: 'subtitle', value: '1.3 Information from Third Parties' },
+      { type: 'bullets', value: ['Identity verification services (BVN validation, NIN verification)', 'Payment processors and financial institutions', 'Fraud prevention and security services'] },
+      { type: 'info', value: 'We only collect information necessary to provide our services, comply with legal requirements, and improve user experience.' },
+    ],
+  },
+  {
+    num: '2',
+    title: 'How We Use Your Information',
+    content: [
+      { type: 'text', value: 'We use your information for the following purposes:' },
+      { type: 'table', value: [
+        { label: 'Service Delivery', detail: 'Process transactions, manage your account, provide customer support' },
+        { label: 'Verification & Security', detail: 'Verify your identity, prevent fraud, detect suspicious activities' },
+        { label: 'Communication', detail: 'Send transaction confirmations, updates, promotional offers' },
+        { label: 'Personalization', detail: 'Customize your experience, recommend relevant services' },
+        { label: 'Analytics', detail: 'Analyze usage patterns, improve features, develop new services' },
+        { label: 'Legal Compliance', detail: 'Comply with laws, respond to legal requests, enforce our terms' },
+      ]},
+      { type: 'subtitle', value: 'How Meritwise Generates Revenue' },
+      { type: 'bullets', value: [
+        'Airtime purchases',
+        'Data subscriptions',
+        'Cable TV payments (DSTV, GOTV, Startimes)',
+        'Electricity bill payments',
+        'Community service fees (1% fee on dues payments, event contributions, and loan disbursements)',
+        'Community loan interest share (30% of 10% monthly interest earned by the community)',
+      ]},
+      { type: 'info', value: 'We do not earn money from wallet balances, peer-to-peer transfers, or bank withdrawals. Your funds remain yours. Community members retain 70% of all interest earned on loans.' },
+      { type: 'warning', value: 'You can opt out of promotional communications at any time through app settings or by contacting us.' },
+    ],
+  },
+  {
+    num: '3',
+    title: 'Information Sharing & Disclosure',
+    content: [
+      { type: 'text', value: 'We do not sell your personal information. We may share your information in the following circumstances:' },
+      { type: 'subtitle', value: '3.1 Service Providers' },
+      { type: 'bullets', value: ['Payment processors (Paystack)', 'Cloud hosting providers', 'Identity verification services', 'Customer support platforms', 'SMS and email service providers'] },
+      { type: 'subtitle', value: '3.2 Service Partners' },
+      { type: 'bullets', value: ['Mobile network operators (MTN, Airtel, Glo, 9mobile)', 'Electricity distribution companies', 'Cable TV providers (DSTV, GOTV, Startimes)', 'Financial institutions for payment processing'] },
+      { type: 'subtitle', value: '3.3 Legal Requirements' },
+      { type: 'bullets', value: ['Comply with court orders, subpoenas, or legal processes', 'Respond to government or regulatory requests', 'Protect our rights, property, or safety', 'Investigate fraud or security breaches'] },
+      { type: 'info', value: 'All third parties we work with are required to maintain the same level of data protection and security standards that we uphold.' },
+    ],
+  },
+  {
+    num: '4',
+    title: 'Data Security',
+    content: [
+      { type: 'subtitle', value: '4.1 Technical Safeguards' },
+      { type: 'bullets', value: ['Industry-standard SSL/TLS encryption for data in transit', 'Strong encryption for data at rest', 'Role-based access controls and enhanced authentication', 'Firewalls, intrusion detection systems, DDoS protection', 'Bcrypt hashing for password storage'] },
+      { type: 'subtitle', value: '4.2 Your Security Role' },
+      { type: 'bullets', value: ['Use strong, unique passwords', 'Enable two-factor authentication', 'Never share your password, PIN, or OTP', 'Log out after using shared devices', 'Report suspicious activities immediately'] },
+      { type: 'warning', value: 'In the unlikely event of a security breach affecting your data, we will notify affected users and relevant authorities in accordance with applicable laws.' },
+    ],
+  },
+  {
+    num: '5',
+    title: 'Your Privacy Rights',
+    content: [
+      { type: 'text', value: 'Under the Nigerian Data Protection Regulation (NDPR), you have the following rights:' },
+      { type: 'rights', value: [
+        { label: 'Right to Access', detail: 'Request a copy of your personal data we hold' },
+        { label: 'Right to Rectification', detail: 'Correct inaccurate or incomplete information' },
+        { label: 'Right to Erasure', detail: 'Request deletion of your data (subject to legal obligations)' },
+        { label: 'Right to Portability', detail: 'Receive your data in a structured, machine-readable format' },
+        { label: 'Right to Object', detail: 'Opt out of certain data processing activities' },
+        { label: 'Right to Withdraw Consent', detail: 'Revoke consent for data processing at any time' },
+      ]},
+      { type: 'subtitle', value: 'How to Exercise Your Rights' },
+      { type: 'bullets', value: ['Access settings in the Meritwise app', 'Email us at support@meritwise.app', 'Contact our Data Protection Officer', 'We will respond to your request within 30 days'] },
+    ],
+  },
+  {
+    num: '6',
+    title: 'Cookies & Tracking',
+    content: [
+      { type: 'bullets', value: ['Essential Cookies: Required for basic platform functionality and security', 'Performance Cookies: Help us understand how users interact with our services', 'Functional Cookies: Remember your preferences and settings', 'Analytics Cookies: Collect data on usage patterns and performance metrics'] },
+      { type: 'info', value: 'You can control cookies through app settings or device settings. Disabling essential cookies may affect platform functionality.' },
+    ],
+  },
+  {
+    num: '7',
+    title: 'Data Retention',
+    content: [
+      { type: 'table', value: [
+        { label: 'Account Information', detail: 'Active period + 7 years after closure' },
+        { label: 'Transaction Records', detail: 'Minimum 7 years (financial regulations)' },
+        { label: 'KYC Documents', detail: '7 years after account closure' },
+        { label: 'Marketing Data', detail: 'Until you opt out or withdraw consent' },
+        { label: 'Support Comms', detail: '3 years from last interaction' },
+        { label: 'Analytics Data', detail: 'Individual data: 2 years' },
+      ]},
+      { type: 'warning', value: 'We may retain certain information longer if required by law, regulation, or ongoing legal proceedings.' },
+    ],
+  },
+  {
+    num: '8',
+    title: 'Third-Party Services',
+    content: [
+      { type: 'text', value: 'Our platform may contain links to or integrate with third-party services. When you interact with them, their own privacy policies apply.' },
+      { type: 'bullets', value: ['We carefully select and vet all third-party partners', 'We require partners to maintain adequate data protection standards', 'We are not responsible for third-party privacy practices'] },
+      { type: 'info', value: "Always verify you're interacting with legitimate service providers when making payments through Meritwise." },
+    ],
+  },
+  {
+    num: '9',
+    title: "Children's Privacy",
+    content: [
+      { type: 'text', value: 'Meritwise is not intended for use by children under the age of 18.' },
+      { type: 'bullets', value: ['We do not knowingly collect personal information from children under 18', 'Users must be at least 18 years old to create an account', 'If we discover that a child has provided personal information, we will delete it immediately'] },
+      { type: 'warning', value: 'If you are a parent or guardian and believe your child has provided us with personal information, contact us immediately at support@meritwise.app' },
+    ],
+  },
+  {
+    num: '10',
+    title: 'Changes to This Policy',
+    content: [
+      { type: 'text', value: 'We may update this Privacy Policy from time to time. We will notify you by updating the "Last Updated" date, sending email notifications for significant changes, and displaying in-app notifications.' },
+      { type: 'info', value: 'Continued use of Meritwise after changes are posted constitutes acceptance of the updated policy.' },
+    ],
+  },
+  {
+    num: '11',
+    title: 'International Data Transfers',
+    content: [
+      { type: 'bullets', value: ['We use cloud services with servers in multiple locations', 'Data transfers comply with applicable data protection laws', 'We implement appropriate safeguards (Standard Contractual Clauses)', 'Your data receives the same level of protection regardless of location'] },
+    ],
+  },
+  {
+    num: '12',
+    title: 'Data Protection Officer',
+    content: [
+      { type: 'text', value: 'We have appointed a Data Protection Officer (DPO) to oversee our privacy and data protection practices.' },
+      { type: 'contact', value: { email: 'support@meritwise.app', phone: '+2347062377546', address: '6, Alakija Street, Ibeju Lekki, Lagos State, Nigeria' } },
+    ],
+  },
+];
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+const checkSvg = `<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#40196B" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`;
+
+function renderBlock(block) {
+  switch (block.type) {
+    case 'text':
+      return `<p class="body-text">${escapeHtml(block.value)}</p>`;
+
+    case 'subtitle':
+      return `<p class="subtitle">${escapeHtml(block.value)}</p>`;
+
+    case 'bullets':
+      return `<div>${block.value.map(item =>
+        `<div class="bullet-row"><div class="bullet-dot"></div><span class="bullet-text">${escapeHtml(item)}</span></div>`
+      ).join('')}</div>`;
+
+    case 'info':
+      return `<div class="info-box"><p class="info-text">${escapeHtml(block.value)}</p></div>`;
+
+    case 'warning':
+      return `<div class="warn-box"><p class="warn-text">${escapeHtml(block.value)}</p></div>`;
+
+    case 'table':
+      return `<div class="table-box">${block.value.map(row =>
+        `<div class="table-row"><span class="table-label">${escapeHtml(row.label)}</span><span class="table-detail">${escapeHtml(row.detail)}</span></div>`
+      ).join('')}</div>`;
+
+    case 'rights':
+      return `<div class="rights-box">${block.value.map(right =>
+        `<div class="right-row">
+          <div class="right-check">${checkSvg}</div>
+          <div>
+            <div class="right-label">${escapeHtml(right.label)}</div>
+            <div class="right-detail">${escapeHtml(right.detail)}</div>
+          </div>
+        </div>`
+      ).join('')}</div>`;
+
+    case 'contact':
+      return `<div class="contact-box">
+        <div class="contact-title">Contact Our Data Protection Officer</div>
+        <div class="contact-row">Email: <a class="contact-link" href="mailto:${block.value.email}">${block.value.email}</a></div>
+        <div class="contact-row">Phone: <a class="contact-link" href="tel:${block.value.phone}">${block.value.phone}</a></div>
+        <div class="contact-row">Address: ${escapeHtml(block.value.address)}</div>
+      </div>`;
+
+    default: return '';
+  }
+}
+
+function renderSections() {
+  const container = document.getElementById('sections');
+  let html = '';
+  SECTIONS.forEach(sec => {
+    html += `<div class="section-card">
+      <div class="section-title-row">
+        <div class="num-badge"><span class="num-badge-txt">${sec.num}</span></div>
+        <span class="section-title">${escapeHtml(sec.title)}</span>
+      </div>
+      <div class="section-body">
+        ${sec.content.map(renderBlock).join('')}
+      </div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// Subtle header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.getElementById('header');
+  if (window.scrollY > 60) header.style.background = '#361558';
+  else header.style.background = '#40196B';
+});
+
+renderSections();
+</script>
+</body>
+</html>
