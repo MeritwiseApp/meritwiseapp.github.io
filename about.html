@@ -11,7 +11,7 @@
 
 <style>
 :root {
-  --blue:     #1545B8;
+  --blue:     #40196B;
   --blue-dim: #EEF2FF;
   --blue-mid: #C7D4FF;
   --blue-2:   #2563EB;
@@ -67,7 +67,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
   z-index:2;
 }
 
-.hero-bg{position:fixed;inset:0;background-image:linear-gradient(var(--ink-5) 1px,transparent 1px),linear-gradient(90deg,var(--ink-5) 1px,transparent 1px);background-size:48px 48px;opacity:0.3;pointer-events:none;z-index:0;}
+.hero-bg{display:none;}
 
 .hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--blue-dim);border:1px solid var(--blue-mid);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:20px;}
 .badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.4s ease-in-out infinite;}
@@ -244,9 +244,8 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 
 <!-- NAV -->
 <nav>
-  <a href="meritwise-landing.html" class="nav-logo">
-    <div class="nav-logo-mark">M</div>
-    Meritwise
+  <a href="#" class="nav-logo">
+    <img src="https://res.cloudinary.com/dbived6ms/image/upload/v1776649554/meritwise-logo-light_ycxybc.png" alt="Meritwise" style="height:28px;width:auto;display:block;"/>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="index.html">Home</a></li>
