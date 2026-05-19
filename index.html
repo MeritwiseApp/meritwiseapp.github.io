@@ -12,10 +12,10 @@
 
 <style>
 :root {
-  --blue:      #1545B8;
-  --blue-dim:  #EEF2FF;
-  --blue-mid:  #C7D4FF;
-  --blue-2:    #2563EB;
+  --blue:      #40196B;
+  --blue-dim:  #F5F3FF;
+  --blue-mid:  #DDD6FE;
+  --blue-2:    #40196B;
   --ink:       #09090B;
   --ink-2:     #27272A;
   --ink-3:     #52525B;
@@ -37,9 +37,8 @@ html{scroll-behavior:smooth;}
 body{font-family:var(--sans);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
 
 /* cursor */
-.cursor{position:fixed;width:10px;height:10px;background:var(--blue);border-radius:50%;pointer-events:none;z-index:99999;transition:transform 0.12s;mix-blend-mode:multiply;}
-.cursor-ring{position:fixed;width:32px;height:32px;border:1.5px solid rgba(21,69,184,0.35);border-radius:50%;pointer-events:none;z-index:99998;transition:all 0.22s cubic-bezier(0.34,1.56,0.64,1);}
-.cursor-ring.hov{transform:scale(2.2);border-color:var(--blue);}
+.cursor{display:none;}
+.cursor-ring{display:none;}
 
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.94);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--ink-5);padding:0 48px;height:66px;display:flex;align-items:center;justify-content:space-between;}
@@ -57,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .burger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
 /* hero */
-.hero-bg{position:fixed;inset:0;background-image:linear-gradient(var(--ink-5) 1px,transparent 1px),linear-gradient(90deg,var(--ink-5) 1px,transparent 1px);background-size:48px 48px;opacity:0.3;pointer-events:none;z-index:0;}
+.hero-bg{display:none;}
 .hero{min-height:100vh;padding:130px 48px 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto;position:relative;z-index:2;}
 .hero-badge{display:inline-flex;align-items:center;gap:7px;background:var(--blue-dim);border:1px solid var(--blue-mid);border-radius:100px;padding:6px 14px;font-size:11px;font-weight:700;color:var(--blue);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:24px;animation:fadeUp 0.7s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;}
 .badge-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.4s ease-in-out infinite;}
@@ -121,7 +120,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .fl-val{font-size:13px;font-weight:700;color:var(--ink);white-space:nowrap;}
 
 /* ticker */
-.ticker-wrap{width:100%;background:var(--blue-dim);border-top:1px solid var(--blue-mid);border-bottom:1px solid var(--blue-mid);padding:14px 0;overflow:hidden;position:relative;z-index:2;}
+.ticker-wrap{width:100%;background:#F5F3FF;border-top:1px solid #DDD6FE;border-bottom:1px solid #DDD6FE;padding:14px 0;overflow:hidden;position:relative;z-index:2;}
 .ticker-track{display:flex;width:max-content;animation:tick 28s linear infinite;}
 .ticker-item{display:flex;align-items:center;gap:8px;padding:0 40px;font-size:12px;font-weight:600;color:var(--blue);white-space:nowrap;letter-spacing:0.2px;}
 .ticker-sep{width:4px;height:4px;background:var(--blue-mid);border-radius:50%;flex-shrink:0;}
@@ -239,7 +238,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255
 .how-float.f2{bottom:40px;left:-40px;color:var(--blue);animation:float 7s ease-in-out infinite 2s;}
 
 /* download */
-.download-section{padding:80px 48px;background:var(--blue);position:relative;overflow:hidden;}
+.download-section{padding:80px 48px;background:linear-gradient(135deg,#40196B);position:relative;overflow:hidden;}
 .download-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;}
 .dl-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;position:relative;z-index:2;}
 .dl-title{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-2px;color:white;line-height:1.05;margin-bottom:12px;}
@@ -344,8 +343,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 <!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">
-    <div class="nav-logo-mark">M</div>
-    Meritwise
+    <img src="https://res.cloudinary.com/dbived6ms/image/upload/v1776649554/meritwise-logo-light_ycxybc.png" alt="Meritwise" style="height:28px;width:auto;display:block;"/>
   </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#features">Features</a></li>
@@ -519,7 +517,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 
             <!-- Promo Banner -->
             <div style="padding:9px 14px;flex-shrink:0;">
-              <div style="background:var(--blue);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;">
+              <div style="background:linear-gradient(135deg,#40196B);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;position:relative;overflow:hidden;">
                 <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:16px 16px;pointer-events:none;"></div>
                 <div style="width:32px;height:32px;background:rgba(255,255,255,0.18);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
@@ -711,7 +709,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
       <div class="feat-spacer"></div>
 
       <!-- Real Lockfund UI card -->
-      <div style="background:linear-gradient(145deg,#1545B8 0%,#0a2d8f 60%,#071f6b 100%);border-radius:16px;padding:16px;margin-top:16px;position:relative;overflow:hidden;">
+      <div style="background:linear-gradient(145deg,#40196B 0%,#40196B 60%,#40196B 100%);border-radius:16px;padding:16px;margin-top:16px;position:relative;overflow:hidden;">
         <!-- subtle grid overlay -->
         <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;"></div>
 
@@ -1055,7 +1053,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 
       <!-- Brand -->
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo"><div class="nav-logo-mark">M</div>Meritwise</a>
+        <a href="index.html" class="nav-logo"><img src="https://res.cloudinary.com/dbived6ms/image/upload/v1776649554/meritwise-logo-light_ycxybc.png" alt="Meritwise" style="height:26px;width:auto;display:block;"/></a>
         <p>Nigeria's smartest digital wallet. Send money, pay bills, save smarter and grow together all in one app.</p>
         <!-- Address -->
         <div style="margin-top:16px;display:flex;flex-direction:column;gap:6px;">
@@ -1179,16 +1177,6 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
 </footer>
 
 <script>
-// cursor
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx-5+'px';cur.style.top=my-5+'px';});
-(function a(){rx+=(mx-rx)*0.13;ry+=(my-ry)*0.13;ring.style.left=rx-16+'px';ring.style.top=ry-16+'px';requestAnimationFrame(a);})();
-document.querySelectorAll('a,button,.feat-card,.svc-card,.testi-card,.how-step,.comm-item').forEach(el=>{
-  el.addEventListener('mouseenter',()=>ring.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>ring.classList.remove('hov'));
-});
-
 const burger=document.getElementById('burger');
 const navLinks=document.getElementById('navLinks');
 burger.addEventListener('click',()=>{burger.classList.toggle('open');navLinks.classList.toggle('open');});
