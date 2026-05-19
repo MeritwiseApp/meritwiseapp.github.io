@@ -397,9 +397,13 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
         <div class="fl-card f2"><div class="fl-ico b">🔒</div><div><div class="fl-lbl">Lockfund Active</div><div class="fl-val">₦120,000</div></div></div>
         <div class="fl-card f3"><div class="fl-ico a">⭐</div><div><div class="fl-lbl">Reward Earned</div><div class="fl-val">+₦500</div></div></div>
 
-        <div class="phone">
-          <div class="phone-notch"></div>
-          <div class="phone-inner">
+        <div class="phone" style="padding:0;overflow:hidden;background:#1a0a3c;">
+          <img 
+            src="https://res.cloudinary.com/dbived6ms/image/upload/meritwise-home-screen_zyhbmk.jpg" 
+            alt="Meritwise App Home Screen" 
+            style="width:100%;height:100%;object-fit:cover;object-position:top center;display:block;"
+          >
+          <div style="display:none;">
 
             <!-- Header -->
             <div style="display:flex;justify-content:space-between;align-items:center;padding:0 14px 10px;flex-shrink:0;">
@@ -582,7 +586,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
               </div>
             </div>
 
-          </div>
+          </div><!-- /hidden -->
       </div>
     </div>
   </div>
@@ -639,8 +643,15 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
         </div>
       </div>
 
-      <!-- Real community UI preview -->
-      <div style="background:var(--surface);border:1px solid var(--ink-5);border-radius:16px;overflow:hidden;font-size:11px;">
+      <!-- Real Communities Screenshot -->
+      <div style="border-radius:20px;overflow:hidden;box-shadow:0 12px 48px rgba(0,135,90,0.2);border:1px solid rgba(0,135,90,0.15);">
+        <img 
+          src="https://res.cloudinary.com/dbived6ms/image/upload/meritwise-communities_datjhv.jpg" 
+          alt="Meritwise Communities - Capital Circle" 
+          style="width:100%;display:block;border-radius:20px;"
+        >
+      </div>
+      <div style="display:none;"><!-- removed fake community UI for now, but keeping code in case we want to add back later -->
 
         <!-- Group header -->
         <div style="background:#00875A;padding:12px 14px;display:flex;align-items:center;gap:10px;">
@@ -708,8 +719,15 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
       <div class="feat-desc">Lock your money away until you're ready. No temptation to spend. Set a date, we hold the bag.</div>
       <div class="feat-spacer"></div>
 
-      <!-- Real Lockfund UI card -->
-      <div style="background:linear-gradient(145deg,#40196B 0%,#40196B 60%,#40196B 100%);border-radius:16px;padding:16px;margin-top:16px;position:relative;overflow:hidden;">
+      <!-- Real MeriLock Screenshot -->
+      <div style="border-radius:16px;overflow:hidden;margin-top:16px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 8px 32px rgba(64,25,107,0.25);">
+        <img 
+          src="https://res.cloudinary.com/dbived6ms/image/upload/meritwise-merilock_qfqeaq.jpg" 
+          alt="MeriLock - Meritwise Savings Lock" 
+          style="width:100%;display:block;border-radius:16px;"
+        >
+      </div>
+      <div style="display:none;">
         <!-- subtle grid overlay -->
         <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.04) 1px,transparent 1px);background-size:18px 18px;pointer-events:none;"></div>
 
@@ -775,7 +793,7 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
             <div style="font-size:10px;font-weight:700;color:white;">02 Apr 2026</div>
           </div>
         </div>
-      </div>
+      </div><!-- /hidden fake card -->
     </div>
 
     <!-- Real-time -->
@@ -802,8 +820,15 @@ footer{padding:60px 48px 36px;border-top:1px solid var(--ink-5);background:white
       <div class="feat-desc">Send money, request funds and chat, all in one place. Transaction cards appear right inside the conversation.</div>
       <div class="feat-spacer"></div>
 
-      <!-- Real MeriChat UI -->
-      <div style="background:#ECE5DD;border-radius:12px;padding:10px 10px 8px;display:flex;flex-direction:column;gap:7px;margin-top:14px;">
+      <!-- Real MeriChat Screenshot -->
+      <div style="border-radius:16px;overflow:hidden;margin-top:14px;box-shadow:0 8px 32px rgba(64,25,107,0.18);border:1px solid var(--ink-5);">
+        <img 
+          src="https://res.cloudinary.com/dbived6ms/image/upload/meritwise-merichat_f8ff1c.jpg" 
+          alt="MeriChat - Chat & Send Money" 
+          style="width:100%;display:block;border-radius:16px;"
+        >
+      </div>
+      <div style="display:none;"><!-- removed fake chat bubbles for real screenshot -->
 
         <!-- Incoming text -->
         <div style="background:white;border-radius:10px 10px 10px 2px;padding:7px 10px;max-width:70%;font-size:11px;color:var(--ink-2);font-weight:500;">Hi <span style="font-size:10px;color:var(--ink-4);margin-left:4px;">11:36 AM</span></div>
